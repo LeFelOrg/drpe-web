@@ -1,0 +1,69 @@
+.log-in_main {
+  display: flex;
+}
+
+.log-in_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 4rem auto 0;
+}
+
+.log-in_logo{
+  margin-bottom: 9rem;
+}
+
+.log-in_sub-title {
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: #FF0042;
+  margin-bottom: 2.4rem;
+}
+
+.log-in_input-email {
+  margin-bottom: 0.8rem;
+  text-indent: 5.2rem;
+  background: url('../../assets/email-icon.svg') #FFFFFF no-repeat;
+  background-position: 1.6rem center;
+}
+
+.log-in_input-password {
+  margin-bottom: 2.4rem;
+  text-indent: 5.2rem;
+  background: url('../../assets/password-icon.svg') #FFFFFF no-repeat;
+  background-position: 1.6rem center;
+}
+
+.log-in_button {
+  margin-bottom: 2.4rem;
+}
+
+.log-in_link-forgot-pw {
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: #02004D;
+  margin-bottom: 8.8rem;
+}
+
+.log-in_new-acc {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.log-in_link-to-new-acc {
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: #E62154;
+}
+
+.log-in_img {
+  display: none;
+  height: 100vh;
+}
+
+@media screen and (min-width: 1200px) {
+  .log-in_img {
+    display: block;
+  }
+}

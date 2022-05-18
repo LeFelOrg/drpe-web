@@ -1,0 +1,57 @@
+.logo {
+  width: 23rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo_title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  width: 20rem;
+  color: #7371FF;
+  text-align: center;
+}
+
+.logo_initials {
+  height: 8rem;
+  font-size: 4.8rem;
+  font-weight: 500;
+  color: #FF0042;
+  border-top: 0.2rem solid #E62154;
+  border-bottom: 0.2rem solid #E62154;
+  width: 100%;
+  text-align: center;
+  line-height: 8rem;
+}
+
+.logo_initials::before {
+  content: '';
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: #7371FF;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 3.5rem;
+}
+ 
+.logo_initials::after {
+  content: '';
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: #7371FF;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 3.5rem;
+}
+
+.logo_description {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #7371FF;
+  text-align: center;
+}
