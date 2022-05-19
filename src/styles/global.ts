@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
 	html, body, div, span, applet, object, iframe,
@@ -56,4 +56,4 @@ export default createGlobalStyle`
 		box-sizing: border-box;
 		background-color: #E5E5E5;
 	}
-`;
+`

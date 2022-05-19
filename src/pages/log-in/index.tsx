@@ -12,17 +12,17 @@ const LogIn: React.FC = () => {
         <Logo />
         <form>
           <h2>Credentials</h2>
-          <Input type='email' name='email' placeholder='Email' icon={FiMail} />
+          <Input type="email" name="email" placeholder="Email" icon={FiMail} />
           <Input
-            type='password'
-            name='password'
-            placeholder='Password'
+            type="password"
+            name="password"
+            placeholder="Password"
             icon={FiLock}
           />
           <Button>Log In</Button>
-          <Link to='/forgotPassword'>Forgot Password?</Link>
+          <Link to="/forgotPassword">Forgot Password?</Link>
         </form>
-        <Link to='/signIn'>
+        <Link to="/signIn">
           <FiLogIn />
           Create New Account
         </Link>
