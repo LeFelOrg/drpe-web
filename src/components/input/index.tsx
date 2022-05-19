@@ -1,7 +1,16 @@
-import './style.css'
+import { InputHTMLAttributes } from 'react'
+import { IconBaseProps } from 'react-icons'
+import { Container } from './styles'
 
-function Input({ className, ...props }: any) {
-  return <input {...props} className={`${className} input`} />
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  name: string
+  icon: React.ComponentType<IconBaseProps>
 }
 
+const Input: React.FC<InputProps> = ({ icon: Icon, ...rest }) => (
+  <Container>
+    {Icon && <Icon size={20} />}
+    <input {...rest} />
+  </Container>
+)
 export default Input

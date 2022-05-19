@@ -1,16 +1,10 @@
-import './style.css'
+import { ButtonHTMLAttributes } from 'react'
+import { Container } from './styles'
 
-interface Props {
-  children: string,
-  className: string
-}
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
-function Button({children, className}: Props) {
-  return(
-    <button className={`${className} button`}>
-      {children}
-    </button>
-  )
-}
+const Button: React.FC<ButtonProps> = ({ children, ...rest }) => (
+  <Container {...rest}>{children}</Container>
+)
 
 export default Button

@@ -1,18 +1,14 @@
 import logoRper from '../../assets/logo-rper.png'
-import './style.css'
+import { Container, Title, Initials, Description } from './styles'
 
-interface Props {
-  className: string
-}
-
-function Logo({ className }: Props) {
+const Logo: React.FC = () => {
   return (
-    <div className={`${className} logo`}>
-      <img src={logoRper} alt="Rapid Participatory Emacipatory Research Logo" />
-      <h1 className="logo_title">Rapid Participatory Emacipatory Research</h1>
-      <p className="logo_initials">RPER</p>
-      <p className="logo_description">Social Management Software</p>
-    </div>
+    <Container>
+      <img src={logoRper} alt='Rapid Participatory Emacipatory Research Logo' />
+      <Title>Rapid Participatory Emacipatory Research</Title>
+      <Initials>RPER</Initials>
+      <Description>Social Management Software</Description>
+    </Container>
   )
 }
 

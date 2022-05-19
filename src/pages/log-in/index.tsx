@@ -1,42 +1,34 @@
-import Logo from '../../components/logo'
-import Input from '../../components/input'
 import Button from '../../components/button'
-import LogInImg from '../../assets/login-img.png'
-import newAccIcon from '../../assets/new-acc-icon.svg'
+import Input from '../../components/input'
+import Logo from '../../components/logo'
 import { Link } from 'react-router-dom'
-import './style.css'
+import { FiLogIn, FiMail, FiLock } from 'react-icons/fi'
+import { Container, Content, Background } from './styles'
 
-function LogIn() {
+const LogIn: React.FC = () => {
   return (
-    <main className="log-in_main">
-      <div className="log-in_form">
-        <Logo className="log-in_logo" />
-        <h2 className="log-in_sub-title">Credentials</h2>
-        <Input
-          className="log-in_input-email"
-          placeholder="Email"
-          type="email"
-          required
-        />
-        <Input
-          className="log-in_input-password"
-          placeholder="Password"
-          type="text"
-          required
-        />
-        <Button className="log-in_button">Log In</Button>
-        <Link className="log-in_link-forgot-pw" to="/forgotPassword">
-          Forgot Password?
+    <Container>
+      <Content>
+        <Logo />
+        <form>
+          <h2>Credentials</h2>
+          <Input type='email' name='email' placeholder='Email' icon={FiMail} />
+          <Input
+            type='password'
+            name='password'
+            placeholder='Password'
+            icon={FiLock}
+          />
+          <Button>Log In</Button>
+          <Link to='/forgotPassword'>Forgot Password?</Link>
+        </form>
+        <Link to='/signIn'>
+          <FiLogIn />
+          Create New Account
         </Link>
-        <div className='log-in_new-acc'>
-          <img src={newAccIcon} alt="Enter Icon" />
-          <Link className="log-in_link-to-new-acc" to="/signIn">
-            Create New Account
-          </Link>
-        </div>
-      </div>
-      <img className="log-in_img" src={LogInImg} alt="People in a meeting." />
-    </main>
+      </Content>
+      <Background />
+    </Container>
   )
 }
 
