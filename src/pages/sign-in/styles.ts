@@ -1,6 +1,6 @@
 import { shade } from 'polished'
 import styled from 'styled-components'
-import LogInBackgroundImg from '../../assets/log-in-bg.png'
+import SignInBackgroundImg from '../../assets/sign-in-bg.png'
 
 export const Container = styled.div`
   height: 100vh;
@@ -36,19 +36,6 @@ export const Content = styled.div`
       color: #ff0042;
       margin-bottom: 24px;
     }
-
-    a {
-      font-size: 1.6rem;
-      text-decoration: none;
-      color: #02004d;
-      display: block;
-      margin-top: 24px;
-      transition: color 0.3s;
-
-      &:hover {
-        color: ${shade(-0.8, '#02004d')};
-      }
-    }
   }
 
   > a {
@@ -71,6 +58,6 @@ export const Content = styled.div`
 
 export const Background = styled.div`
   flex: 1;
-  background: url(${LogInBackgroundImg}) no-repeat top;
+  background: url(${SignInBackgroundImg}) no-repeat top;
   background-size: cover;
 `
