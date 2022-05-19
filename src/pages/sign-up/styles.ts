@@ -1,6 +1,6 @@
 import { shade } from 'polished'
 import styled from 'styled-components'
-import SignInBackgroundImg from '../../assets/sign-in-bg.png'
+import SignUpBackgroundImg from '../../assets/sign-up-bg.png'
 
 export const Container = styled.div`
   height: 100vh;
@@ -58,6 +58,6 @@ export const Content = styled.div`
 
 export const Background = styled.div`
   flex: 1;
-  background: url(${SignInBackgroundImg}) no-repeat top;
+  background: url(${SignUpBackgroundImg}) no-repeat top;
   background-size: cover;
 `

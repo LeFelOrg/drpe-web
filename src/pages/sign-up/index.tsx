@@ -2,16 +2,21 @@ import Button from '../../components/button'
 import Input from '../../components/input'
 import Logo from '../../components/logo'
 import { Link } from 'react-router-dom'
+import { Form } from '@unform/web'
 import { FiArrowLeft, FiMail, FiLock, FiUser } from 'react-icons/fi'
 import { Container, Content, Background } from './styles'
 
-const SignIn: React.FC = () => {
+const SignUp: React.FC = () => {
+  function handleSubmit(data: object) {
+    console.log(data)
+  }
+
   return (
     <Container>
       <Background />
       <Content>
         <Logo />
-        <form>
+        <Form onSubmit={handleSubmit}>
           <h2>Sign Up - For Team Members</h2>
           <Input type="text" name="name" placeholder="Name" icon={FiUser} />
           <Input type="email" name="email" placeholder="Email" icon={FiMail} />
@@ -22,7 +27,7 @@ const SignIn: React.FC = () => {
             icon={FiLock}
           />
           <Button>Create Account</Button>
-        </form>
+        </Form>
         <Link to="/">
           <FiArrowLeft />
           Create New Account
@@ -32,4 +37,4 @@ const SignIn: React.FC = () => {
   )
 }
 
-export default SignIn
+export default SignUp
