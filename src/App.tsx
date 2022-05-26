@@ -1,13 +1,13 @@
-import { AuthProvider } from './hooks/auth-context'
 import Router from './routes'
+import AppProvider from './contexts'
 import GlobalStyle from './styles/global'
 
 const App: React.FC = () => {
   return (
     <>
-      <AuthProvider>
+      <AppProvider>
         <Router />
-      </AuthProvider>
+      </AppProvider>
       <GlobalStyle />
     </>
   )

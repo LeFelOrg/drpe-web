@@ -1,13 +1,13 @@
 import { useCallback, useRef } from 'react'
-import Button from '../../components/button'
-import Input from '../../components/input'
-import Logo from '../../components/logo'
+import * as Yup from 'yup'
+import { FiArrowLeft, FiMail, FiLock, FiUser } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { Form } from '@unform/web'
 import { FormHandles } from '@unform/core'
-import * as Yup from 'yup'
 import getValidationErrors from '../../utils/get-validation-errors'
-import { FiArrowLeft, FiMail, FiLock, FiUser } from 'react-icons/fi'
+import Button from '../../components/button'
+import Input from '../../components/input'
+import Logo from '../../components/logo'
 import { Container, Content, Background } from './styles'
 
 const SignUp: React.FC = () => {
