@@ -10,4 +10,4 @@ On the main screen of the application it will be possible to search and consult 
 
 So far it has been done:
 - Front-end: Log in and Sign up pages.
-- Backend: -
+- Back-end: -
