@@ -67,7 +67,7 @@ const SignUp: React.FC = () => {
         })
       }
     },
-    [addToast],
+    [addToast, navigate],
   )
 
   return user ? (
@@ -91,7 +91,7 @@ const SignUp: React.FC = () => {
         </Form>
         <Link to="/">
           <FiArrowLeft />
-          Create New Account
+          Back to Log In
         </Link>
       </Content>
     </Container>

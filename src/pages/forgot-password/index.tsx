@@ -1,10 +1,10 @@
 import { useRef, useCallback } from 'react'
 import * as Yup from 'yup'
-import { FiLogIn, FiMail, FiLock } from 'react-icons/fi'
+import { FiArrowLeft, FiMail } from 'react-icons/fi'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { Form } from '@unform/web'
-import { FormHandles } from '@unform/core'
 import { useAuth } from '../../contexts/auth-context'
+import { FormHandles } from '@unform/core'
 import { useToast } from '../../contexts/toast-context'
 import getValidationErrors from '../../utils/get-validation-errors'
 import Button from '../../components/button'
@@ -12,20 +12,19 @@ import Input from '../../components/input'
 import Logo from '../../components/logo'
 import { Container, Content, Background } from './styles'
 
-interface LogInFormData {
+interface ForgotPasswordFormData {
   email: string
-  password: string
 }
 
-const LogIn: React.FC = () => {
+const ForgotPassword: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
 
-  const { logIn, user } = useAuth()
+  const { user } = useAuth()
   const { addToast } = useToast()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const handleSubmit = useCallback(
-    async (data: LogInFormData) => {
+    async (data: ForgotPasswordFormData) => {
       try {
         formRef.current?.setErrors({})
 
@@ -33,17 +32,13 @@ const LogIn: React.FC = () => {
           email: Yup.string()
             .required('Email required.')
             .email('Enter a valid email address.'),
-          password: Yup.string().required('Password required.'),
         })
         await schema.validate(data, {
           abortEarly: false,
         })
-        await logIn({
-          email: data.email,
-          password: data.password,
-        })
+        // password recovery
 
-        navigate('/dashboard')
+        // navigate('/dashboard')
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err)
@@ -53,13 +48,13 @@ const LogIn: React.FC = () => {
         }
         addToast({
           type: 'error',
-          title: 'Authentication error',
+          title: 'Password recovery error',
           description:
-            'An error occurred when logging in, please check credentials',
+            'An error occurred when trying to reset your password, please try again',
         })
       }
     },
-    [logIn, addToast, navigate],
+    [addToast],
   )
 
   return user ? (
@@ -69,20 +64,13 @@ const LogIn: React.FC = () => {
       <Content>
         <Logo />
         <Form ref={formRef} onSubmit={handleSubmit}>
-          <h2>Credentials</h2>
+          <h2>Password Recovery</h2>
           <Input type="text" name="email" placeholder="Email" icon={FiMail} />
-          <Input
-            type="password"
-            name="password"
-            placeholder="Password"
-            icon={FiLock}
-          />
-          <Button>Log In</Button>
-          <Link to="/forgot-password">Forgot Password?</Link>
+          <Button>Recover</Button>
         </Form>
-        <Link to="/signup">
-          <FiLogIn />
-          Create New Account
+        <Link to="/">
+          <FiArrowLeft />
+          Back to Log In
         </Link>
       </Content>
       <Background />
@@ -90,4 +78,4 @@ const LogIn: React.FC = () => {
   )
 }
 
-export default LogIn
+export default ForgotPassword
