@@ -1,7 +1,7 @@
 import { useRef, useCallback } from 'react'
 import * as Yup from 'yup'
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { Form } from '@unform/web'
 import { FormHandles } from '@unform/core'
 import { useAuth } from '../../contexts/auth-context'
@@ -20,8 +20,9 @@ interface LogInFormData {
 const LogIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
 
-  const { logIn } = useAuth()
+  const { logIn, user } = useAuth()
   const { addToast } = useToast()
+  const navigate = useNavigate()
 
   const handleSubmit = useCallback(
     async (data: LogInFormData) => {
@@ -41,23 +42,29 @@ const LogIn: React.FC = () => {
           email: data.email,
           password: data.password,
         })
+
+        navigate('/dashboard')
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err)
           formRef.current?.setErrors(errors)
+
+          return
         }
+        addToast({
+          type: 'error',
+          title: 'Authentication error',
+          description:
+            'An error occurred when logging in, please check credentials',
+        })
       }
-      addToast({
-        type: 'error',
-        title: 'Authentication error',
-        description:
-          'An error occurred when logging in, please check credentials',
-      })
     },
     [logIn, addToast],
   )
 
-  return (
+  return user ? (
+    <Navigate to="/dashboard" />
+  ) : (
     <Container>
       <Content>
         <Logo />
