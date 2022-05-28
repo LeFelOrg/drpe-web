@@ -1,7 +1,7 @@
 import { useRef, useCallback } from 'react'
 import * as Yup from 'yup'
 import { FiArrowLeft, FiMail } from 'react-icons/fi'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { Form } from '@unform/web'
 import { useAuth } from '../../contexts/auth-context'
 import { FormHandles } from '@unform/core'
@@ -16,12 +16,21 @@ interface ForgotPasswordFormData {
   email: string
 }
 
+type LocationProps = {
+  state: {
+    from: Location
+  }
+}
+
 const ForgotPassword: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
 
   const { user } = useAuth()
   const { addToast } = useToast()
-  // const navigate = useNavigate()
+
+  const navigate = useNavigate()
+  const location = useLocation() as unknown as LocationProps
+  const from = location.state?.from?.pathname || '/'
 
   const handleSubmit = useCallback(
     async (data: ForgotPasswordFormData) => {
@@ -38,7 +47,7 @@ const ForgotPassword: React.FC = () => {
         })
         // password recovery
 
-        // navigate('/dashboard')
+        navigate(from, { replace: true })
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err)
@@ -57,9 +66,11 @@ const ForgotPassword: React.FC = () => {
     [addToast],
   )
 
-  return user ? (
-    <Navigate to="/dashboard" />
-  ) : (
+  if (user) {
+    return <Navigate to="/dashboard" />
+  }
+
+  return (
     <Container>
       <Content>
         <Logo />

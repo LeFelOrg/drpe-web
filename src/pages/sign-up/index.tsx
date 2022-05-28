@@ -1,7 +1,7 @@
 import { useCallback, useRef } from 'react'
 import * as Yup from 'yup'
 import { FiArrowLeft, FiMail, FiLock, FiUser } from 'react-icons/fi'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { Form } from '@unform/web'
 import { FormHandles } from '@unform/core'
 import api from '../../services/api'
@@ -19,10 +19,19 @@ interface SignUpFormData {
   password: string
 }
 
+type LocationProps = {
+  state: {
+    from: Location
+  }
+}
+
 const SignUp: React.FC = () => {
   const { user } = useAuth()
   const { addToast } = useToast()
+
   const navigate = useNavigate()
+  const location = useLocation() as unknown as LocationProps
+  const from = location.state?.from?.pathname || '/'
 
   const formRef = useRef<FormHandles>(null)
 
@@ -52,7 +61,7 @@ const SignUp: React.FC = () => {
           description: 'You can now log in to RPER',
         })
 
-        navigate('/dashboard')
+        navigate(from, { replace: true })
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err)
@@ -70,9 +79,11 @@ const SignUp: React.FC = () => {
     [addToast, navigate],
   )
 
-  return user ? (
-    <Navigate to="/dashboard" />
-  ) : (
+  if (user) {
+    return <Navigate to="/dashboard" />
+  }
+
+  return (
     <Container>
       <Background />
       <Content>
