@@ -88,7 +88,7 @@ const LogIn: React.FC = () => {
             placeholder="Password"
             icon={FiLock}
           />
-          <Button>Log In</Button>
+          <Button type="submit">Log In</Button>
           <Link to="/forgot-password">Forgot Password?</Link>
         </Form>
         <Link to="/signup">
