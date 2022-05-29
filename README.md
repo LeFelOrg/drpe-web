@@ -7,7 +7,3 @@ The project coordinator creates a new article and can add integrates to the proj
 On the main screen of the application it will be possible to search and consult all the articles already published on the site.
 
 ### This application is under construction.
-
-So far it has been done:
-- Front-end: Log in and Sign up pages.
-- Back-end: -
