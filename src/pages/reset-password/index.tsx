@@ -1,7 +1,12 @@
 import { useRef, useCallback } from 'react'
 import * as Yup from 'yup'
 import { FiLock } from 'react-icons/fi'
-import { Navigate, useNavigate, useLocation } from 'react-router-dom'
+import {
+  Navigate,
+  useNavigate,
+  useLocation,
+  useSearchParams,
+} from 'react-router-dom'
 import { Form } from '@unform/web'
 import { FormHandles } from '@unform/core'
 import { useAuth } from '../../contexts/auth-context'
@@ -32,6 +37,7 @@ const ResetPassword: React.FC = () => {
 
   const navigate = useNavigate()
   const location = useLocation() as unknown as LocationProps
+  const [searchParams] = useSearchParams()
   const from = location.state?.from?.pathname || '/'
 
   const handleSubmit = useCallback(
@@ -51,10 +57,16 @@ const ResetPassword: React.FC = () => {
         })
 
         const { password, password_confirmation } = data
+        const token = searchParams.get('token')
+
+        if (!token) {
+          throw new Error()
+        }
 
         await api.post('/password/reset', {
           password,
           password_confirmation,
+          token,
         })
 
         navigate(from, { replace: true })
