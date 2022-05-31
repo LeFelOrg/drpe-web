@@ -1,23 +1,31 @@
-import { FiPower, FiSearch, FiChevronDown } from 'react-icons/fi'
+import { useCallback, useState } from 'react'
+import { FiPower, FiSearch, FiChevronDown, FiChevronUp } from 'react-icons/fi'
 import { useAuth } from '../../contexts/auth-context'
 import SmLogo from '../../assets/small-logo.svg'
 import Button from '../../components/button'
 import {
   Card,
-  Container,
   Header,
   HeaderContent,
   InputContainer,
   Main,
   SortBtn,
+  SortContainer,
+  SortList,
 } from './styles'
 import ProfileInfo from '../../components/profile-info'
 
 const Dashboard: React.FC = () => {
+  const [toggleSort, setToggleSort] = useState(false)
+
   const { logOut } = useAuth()
 
+  const toggleSortBtn = useCallback(() => {
+    toggleSort ? setToggleSort(false) : setToggleSort(true)
+  }, [toggleSort])
+
   return (
-    <Container>
+    <>
       <Header>
         <HeaderContent>
           <img
@@ -35,27 +43,82 @@ const Dashboard: React.FC = () => {
       <Main>
         <h1>RPER List</h1>
         <Button>+ Add New RPER</Button>
-        <SortBtn>
-          Sort By
-          <FiChevronDown />
-        </SortBtn>
+        <SortContainer>
+          <SortBtn onClick={toggleSortBtn} toggle={toggleSort}>
+            Sort By
+            <FiChevronDown />
+            <FiChevronUp />
+          </SortBtn>
+          <SortList toggle={toggleSort}>
+            <li>Name</li>
+            <li>Last Update</li>
+            <li>Created Date</li>
+          </SortList>
+        </SortContainer>
         <InputContainer>
           <FiSearch />
           <input type="text" placeholder="Search" />
           <button>Search</button>
         </InputContainer>
+
         <Card>
+          <img src="https://picsum.photos/300/280" alt="" />
           <div>
-            <img src="" alt="" />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
+              expedita quis optio, nobis recusandae qui? Deleniti voluptatibus
+              odio perferendis laudantium.
+            </p>
             <div>
-              <p>Lorem ipsum dolor sit amet.</p>
+              <span>Lorem ipsum</span>
+              <span>Lorem ipsum</span>
+            </div>
+          </div>
+        </Card>
+        <Card>
+          <img src="https://picsum.photos/300/280" alt="" />
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
+              expedita quis optio, nobis recusandae qui? Deleniti voluptatibus
+              odio perferendis laudantium.
+            </p>
+            <div>
+              <span>Lorem ipsum</span>
+              <span>Lorem ipsum</span>
+            </div>
+          </div>
+        </Card>
+        <Card>
+          <img src="https://picsum.photos/300/280" alt="" />
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
+              expedita quis optio, nobis recusandae qui? Deleniti voluptatibus
+              odio perferendis laudantium.
+            </p>
+            <div>
+              <span>Lorem ipsum</span>
+              <span>Lorem ipsum</span>
+            </div>
+          </div>
+        </Card>
+        <Card>
+          <img src="https://picsum.photos/300/280" alt="" />
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
+              expedita quis optio, nobis recusandae qui? Deleniti voluptatibus
+              odio perferendis laudantium.
+            </p>
+            <div>
               <span>Lorem ipsum</span>
               <span>Lorem ipsum</span>
             </div>
           </div>
         </Card>
       </Main>
-    </Container>
+    </>
   )
 }
 
