@@ -36,6 +36,10 @@ export const Content = styled.div`
       color: #ff0042;
       margin-bottom: 24px;
     }
+
+    button {
+      margin-top: 16px;
+    }
   }
 
   > a {

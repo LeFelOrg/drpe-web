@@ -17,6 +17,7 @@ export const Container = styled.div<ContainerProps>`
   color: #433889;
   display: flex;
   align-items: center;
+  font-family: 'Roboto Slab', serif;
 
   & + div {
     margin-top: 8px;

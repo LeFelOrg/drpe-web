@@ -13,7 +13,7 @@ export const Container = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-top: 16px;
+  font-family: 'Roboto Slab', serif;
 
   &:hover {
     background-color: ${shade(0.2, '#e62154')};
