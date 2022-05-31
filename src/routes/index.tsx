@@ -5,6 +5,7 @@ import ForgotPassword from '../pages/forgot-password'
 import ResetPassword from '../pages/reset-password'
 import Protected from './protected'
 import Dashboard from '../pages/dashboard'
+import Profile from '../pages/profile'
 
 function Router() {
   return (
@@ -16,6 +17,7 @@ function Router() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route element={<Protected />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>

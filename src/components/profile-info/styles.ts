@@ -5,6 +5,15 @@ export const Container = styled.div`
   align-items: center;
   gap: 13px;
 
+  a {
+    text-decoration: none;
+    transition: all 0.2s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
   div {
     display: flex;
     flex-direction: column;

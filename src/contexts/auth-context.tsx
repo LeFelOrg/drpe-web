@@ -4,6 +4,7 @@ import api from '../services/api'
 interface User {
   id: string
   name: string
+  email: string
   avatar_url: string
 }
 
@@ -33,6 +34,8 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     const user = localStorage.getItem('@RPER:user')
 
     if (token && user) {
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
+
       return { token, user: JSON.parse(user) }
     }
 
@@ -46,6 +49,8 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
     localStorage.setItem('@RPER:token', token)
     localStorage.setItem('@RPER:user', JSON.stringify(user))
+
+    api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
     setData({ token, user })
   }, [])

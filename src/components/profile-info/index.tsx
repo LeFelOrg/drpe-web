@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/auth-context'
 import { Container, PlaceholderLoading } from './styles'
 
@@ -15,11 +16,12 @@ const ProfileInfo: React.FC = () => {
             <div></div>
           </PlaceholderLoading>
         )}
-
-        <div>
-          <span>Welcome,</span>
-          <strong>{user.name}</strong>
-        </div>
+        <Link to="/profile">
+          <div>
+            <span>Welcome,</span>
+            <strong>{user.name}</strong>
+          </div>
+        </Link>
       </Container>
     </>
   )
