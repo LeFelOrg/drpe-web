@@ -10,8 +10,9 @@ const toggle = css`
 `
 
 export const Header = styled.header`
+  height: 144px;
+  padding: 0 40px;
   background-color: #02004d;
-  padding: 30px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -49,14 +50,14 @@ export const Header = styled.header`
   }
 
   @media screen and (min-width: 720px) {
-    padding: 30px 60px;
+    padding: 0 60px;
     img {
       display: block;
     }
   }
 
   @media screen and (min-width: 1024px) {
-    padding: 30px 80px;
+    padding: 0 80px;
 
     img {
       display: block;
@@ -68,7 +69,7 @@ export const Header = styled.header`
   }
 
   @media screen and (min-width: 1280px) {
-    padding: 30px 160px;
+    padding: 0 160px;
   }
 `
 export const HeaderContent = styled.div`

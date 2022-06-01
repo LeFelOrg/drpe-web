@@ -72,7 +72,7 @@ const SignUp: React.FC = () => {
         addToast({
           type: 'error',
           title: 'Registration error',
-          description: 'An error occurred when signing  up, please try again',
+          description: 'An error occurred when signing up, please try again',
         })
       }
     },

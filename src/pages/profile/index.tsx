@@ -1,7 +1,7 @@
-import { useCallback, useRef } from 'react'
+import { InputHTMLAttributes, useCallback, useRef, useState } from 'react'
 import * as Yup from 'yup'
 import { FiArrowLeft, FiMail, FiLock, FiUser, FiCamera } from 'react-icons/fi'
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Form } from '@unform/web'
 import { FormHandles } from '@unform/core'
 import api from '../../services/api'
@@ -15,7 +15,9 @@ import { Container, Content, PlaceholderLoading, AvatarInput } from './styles'
 interface ProfileFormData {
   name: string
   email: string
+  old_password: string
   password: string
+  password_confirmation: string
 }
 
 type LocationProps = {
@@ -25,14 +27,15 @@ type LocationProps = {
 }
 
 const Profile: React.FC = () => {
-  const { user } = useAuth()
+  const formRef = useRef<FormHandles>(null)
+  const { user, updatedUser } = useAuth()
   const { addToast } = useToast()
+  const [name, setName] = useState(user.name)
+  const [email, setEmail] = useState(user.email)
 
   const navigate = useNavigate()
   const location = useLocation() as unknown as LocationProps
   const from = location.state?.from?.pathname || '/'
-
-  const formRef = useRef<FormHandles>(null)
 
   const handleSubmit = useCallback(
     async (data: ProfileFormData) => {
@@ -46,18 +49,48 @@ const Profile: React.FC = () => {
           email: Yup.string()
             .required('Email required.')
             .email('Enter a valid email address.'),
-          password: Yup.string().min(6, 'Enter at least 6 digits.'),
+
+          old_password: Yup.string(),
+
+          password: Yup.string().when('old_password', {
+            is: (value: InputHTMLAttributes<HTMLInputElement>) => !!value,
+            then: Yup.string()
+              .required('Password required')
+              .min(6, 'Enter at least 6 digits.'),
+            otherwise: Yup.string(),
+          }),
+
+          password_confirmation: Yup.string()
+            .when('old_password', {
+              is: (value: InputHTMLAttributes<HTMLInputElement>) => !!value,
+              then: Yup.string().required('Password required'),
+              otherwise: Yup.string(),
+            })
+            .oneOf([Yup.ref('password'), null], 'Password must match'),
         })
         await schema.validate(data, {
           abortEarly: false,
         })
 
-        await api.post('/users', data)
+        const { name, email, old_password, password, password_confirmation } =
+          data
+
+        const formData = {
+          name,
+          email,
+          ...(old_password
+            ? { old_password, password, password_confirmation }
+            : {}),
+        }
+
+        const response = await api.put('/profile', formData)
+
+        updatedUser(response.data)
 
         addToast({
           type: 'success',
-          title: 'Registration successfully completed!',
-          description: 'You can now log in to RPER',
+          title: 'Profile updated!',
+          description: 'Your profile information has been successfully updated',
         })
 
         navigate(from, { replace: true })
@@ -70,12 +103,42 @@ const Profile: React.FC = () => {
         }
         addToast({
           type: 'error',
-          title: 'Registration error',
-          description: 'An error occurred when signing  up, please try again',
+          title: 'Update error',
+          description:
+            'An error occurred when updating profile, please try again',
         })
       }
     },
     [addToast, navigate],
+  )
+
+  const handleChange = useCallback(
+    (
+      e: React.ChangeEvent<HTMLInputElement>,
+      setType: React.Dispatch<React.SetStateAction<string>>,
+    ) => {
+      setType(e.target.value)
+    },
+    [],
+  )
+
+  const handleAvatarChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.target.files) {
+        const data = new FormData()
+        data.append('avatar', e.target.files[0])
+
+        api.patch('/users/avatar', data).then(response => {
+          updatedUser(response.data)
+
+          addToast({
+            type: 'success',
+            title: 'Avatar updated!',
+          })
+        })
+      }
+    },
+    [addToast, updatedUser],
   )
 
   return (
@@ -96,18 +159,29 @@ const Profile: React.FC = () => {
               <div></div>
             </PlaceholderLoading>
           )}
-          <button type="button">
+          <label htmlFor="avatar">
             <FiCamera />
-          </button>
+            <input type="file" id="avatar" onChange={handleAvatarChange} />
+          </label>
         </AvatarInput>
-        <Form
-          ref={formRef}
-          initialData={{ name: 'user.name', email: 'user.email' }}
-          onSubmit={handleSubmit}
-        >
+        <Form ref={formRef} onSubmit={handleSubmit}>
           <h1>My Profile</h1>
-          <Input type="text" name="name" placeholder="Name" icon={FiUser} />
-          <Input type="text" name="email" placeholder="Email" icon={FiMail} />
+          <Input
+            type="text"
+            name="name"
+            placeholder="Name"
+            icon={FiUser}
+            value={name}
+            onChange={e => handleChange(e, setName)}
+          />
+          <Input
+            type="text"
+            name="email"
+            placeholder="Email"
+            icon={FiMail}
+            value={email}
+            onChange={e => handleChange(e, setEmail)}
+          />
           <Input
             type="password"
             name="old_password"
