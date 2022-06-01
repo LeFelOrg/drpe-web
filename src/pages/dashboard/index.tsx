@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useState, useRef } from 'react'
 import { FiPower, FiSearch, FiChevronDown, FiChevronUp } from 'react-icons/fi'
 import { useAuth } from '../../contexts/auth-context'
 import SmLogo from '../../assets/small-logo.svg'
@@ -9,6 +9,7 @@ import {
   HeaderContent,
   InputContainer,
   Main,
+  Modal,
   SortBtn,
   SortContainer,
   SortList,
@@ -17,12 +18,17 @@ import ProfileInfo from '../../components/profile-info'
 
 const Dashboard: React.FC = () => {
   const [toggleSort, setToggleSort] = useState(false)
+  const modalRef = useRef<any>(null)
 
   const { logOut } = useAuth()
 
   const toggleSortBtn = useCallback(() => {
     toggleSort ? setToggleSort(false) : setToggleSort(true)
   }, [toggleSort])
+
+  const openModal = useCallback(() => {
+    modalRef.current.showModal()
+  }, [modalRef])
 
   return (
     <>
@@ -42,7 +48,7 @@ const Dashboard: React.FC = () => {
 
       <Main>
         <h1>RPER List</h1>
-        <Button>+ Add New RPER</Button>
+        <Button onClick={openModal}>+ Add New RPER</Button>
         <SortContainer>
           <SortBtn onClick={toggleSortBtn} toggle={toggleSort}>
             Sort By
@@ -117,6 +123,9 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
         </Card>
+        <Modal ref={modalRef}>
+          <h2>RPER Name</h2>
+        </Modal>
       </Main>
     </>
   )

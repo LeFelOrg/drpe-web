@@ -333,3 +333,11 @@ export const Card = styled.article`
   @media screen and (min-width: 1280px) {
   }
 `
+export const Modal = styled.dialog`
+  border-radius: 20px;
+  border: 0;
+
+  &::backdrop {
+    background-color: #00000080;
+  }
+`
