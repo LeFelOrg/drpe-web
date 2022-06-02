@@ -1,6 +1,7 @@
 import { InputHTMLAttributes, useCallback, useRef, useState } from 'react'
 import * as Yup from 'yup'
-import { FiArrowLeft, FiMail, FiLock, FiUser, FiCamera } from 'react-icons/fi'
+import { FiMail, FiLock, FiUser, FiCamera } from 'react-icons/fi'
+import { BsArrowLeft } from 'react-icons/bs'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Form } from '@unform/web'
 import { FormHandles } from '@unform/core'
@@ -145,7 +146,7 @@ const Profile: React.FC = () => {
     <Container>
       <header>
         <Link to="/dashboard">
-          <FiArrowLeft />
+          <BsArrowLeft />
           Back
         </Link>
       </header>

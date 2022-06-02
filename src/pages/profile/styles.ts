@@ -7,48 +7,52 @@ export const Container = styled.div`
   flex-direction: column;
 
   header {
-    height: 144px;
     background-color: #02004d;
+    padding: 60px 20px;
     display: flex;
-    align-items: center;
     justify-content: flex-end;
 
     a {
+      font-family: 'Roboto Slab', serif;
+      font-size: 0;
+      font-weight: 500;
+      color: #e62154;
+      cursor: pointer;
       display: flex;
       align-items: center;
-      font-size: 1.6rem;
-      color: #e62154;
-      margin-right: 20px;
+      gap: 12px;
       text-decoration: none;
+      transition: color 0.3s;
       z-index: 1;
 
-      svg {
-        color: #7371ff;
-        width: 24px;
-        height: 24px;
-      }
-
       &:hover {
-        opacity: 0.9;
+        color: ${shade(0.2, '#e62154')};
+      }
+
+      &:hover > svg {
+        color: ${shade(0.2, '#7371ff')};
       }
     }
 
-    @media screen and (min-width: 600px) {
+    svg {
+      color: #7371ff;
+      width: 24px;
+      height: 24px;
+    }
+
+    @media screen and (min-width: 720px) {
       a {
-        margin-right: 40px;
+        font-size: 1.6rem;
+        padding-right: 40px;
       }
     }
 
-    @media screen and (min-width: 900px) {
-      a {
-        margin-right: 80px;
-      }
+    @media screen and (min-width: 1024px) {
+      padding-right: 80px;
     }
 
-    @media screen and (min-width: 1200px) {
-      a {
-        margin-right: 130px;
-      }
+    @media screen and (min-width: 1280px) {
+      padding-right: 130px;
     }
   }
 `
