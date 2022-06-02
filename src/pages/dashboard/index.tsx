@@ -20,7 +20,7 @@ const Dashboard: React.FC = () => {
   const [toggleSort, setToggleSort] = useState(false)
   const modalRef = useRef<any>(null)
 
-  const { logOut } = useAuth()
+  const { logOut, user } = useAuth()
 
   const toggleSortBtn = useCallback(() => {
     toggleSort ? setToggleSort(false) : setToggleSort(true)
@@ -28,6 +28,10 @@ const Dashboard: React.FC = () => {
 
   const openModal = useCallback(() => {
     modalRef.current.showModal()
+  }, [modalRef])
+
+  const closeModal = useCallback(() => {
+    modalRef.current.close()
   }, [modalRef])
 
   return (
@@ -124,7 +128,20 @@ const Dashboard: React.FC = () => {
           </div>
         </Card>
         <Modal ref={modalRef}>
-          <h2>RPER Name</h2>
+          <form>
+            <label htmlFor="rperName">RPER Name:</label>
+            <input type="text" name="rperName" id="rperName" />
+            <p>
+              <span>Coordinator: </span>
+              <strong>{user.name}</strong>
+            </p>
+            <div>
+              <button type="button" onClick={closeModal}>
+                Cancel
+              </button>
+              <button>Create RPER</button>
+            </div>
+          </form>
         </Modal>
       </Main>
     </>

@@ -336,8 +336,106 @@ export const Card = styled.article`
 export const Modal = styled.dialog`
   border-radius: 20px;
   border: 0;
+  width: 300px;
+  box-sizing: border-box;
 
   &::backdrop {
     background-color: #00000080;
+  }
+
+  form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    font-size: 2.4rem;
+    color: #7371ff;
+  }
+
+  input {
+    margin: 16px 0;
+    border: 0;
+    border-bottom: 1px solid black;
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.6rem;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  p {
+    margin: 16px 0;
+    font-size: 1.4rem;
+  }
+
+  span {
+    font-weight: 700;
+    color: #7371ff;
+  }
+
+  strong {
+    color: #ff0042;
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+
+    button {
+      width: 100%;
+      border: 0;
+      background-color: #f2f4f8;
+      color: #433889;
+      border-radius: 12px;
+      font-size: 1.6rem;
+      padding: 8px;
+      font-family: 'Roboto Slab', serif;
+      font-weight: 500;
+      border: 1px solid #c3bedd;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: ${shade(0.2, '#f2f4f8')};
+      }
+
+      & + button {
+        background-color: #e62154;
+        color: #f0edee;
+
+        &:hover {
+          background-color: ${shade(0.2, '#e62154')};
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 720px) {
+    font-size: 2.6rem;
+    width: 600px;
+    height: 400px;
+
+    form {
+      padding: 30px 40px;
+    }
+
+    input {
+      margin-top: 30px;
+      margin-bottom: 90px;
+      font-size: 1.8rem;
+    }
+
+    p {
+      margin-bottom: 40px;
+      font-size: 1.6rem;
+    }
+
+    div {
+      gap: 40px;
+    }
   }
 `
