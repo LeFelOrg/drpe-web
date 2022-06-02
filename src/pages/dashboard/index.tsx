@@ -1,12 +1,10 @@
 import { useCallback, useState, useRef } from 'react'
-import { FiPower, FiSearch, FiChevronDown, FiChevronUp } from 'react-icons/fi'
+import { FiSearch, FiChevronDown, FiChevronUp } from 'react-icons/fi'
 import { useAuth } from '../../contexts/auth-context'
-import SmLogo from '../../assets/small-logo.svg'
+import Header from '../../components/header'
 import Button from '../../components/button'
 import {
   Card,
-  Header,
-  HeaderContent,
   InputContainer,
   Main,
   Modal,
@@ -14,13 +12,12 @@ import {
   SortContainer,
   SortList,
 } from './styles'
-import ProfileInfo from '../../components/profile-info'
 
 const Dashboard: React.FC = () => {
   const [toggleSort, setToggleSort] = useState(false)
   const modalRef = useRef<any>(null)
 
-  const { logOut, user } = useAuth()
+  const { user } = useAuth()
 
   const toggleSortBtn = useCallback(() => {
     toggleSort ? setToggleSort(false) : setToggleSort(true)
@@ -36,20 +33,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <Header>
-        <HeaderContent>
-          <img
-            src={SmLogo}
-            alt="Rapid Participatory Emancipatory Research logo"
-          />
-          <ProfileInfo />
-        </HeaderContent>
-        <button type="button" onClick={logOut}>
-          <FiPower />
-          Sign Out
-        </button>
-      </Header>
-
+      <Header btnType="signOut" />
       <Main>
         <h1>RPER List</h1>
         <Button onClick={openModal}>+ Add New RPER</Button>
