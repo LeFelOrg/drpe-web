@@ -4,7 +4,7 @@ import SignUp from '../pages/sign-up'
 import ForgotPassword from '../pages/forgot-password'
 import ResetPassword from '../pages/reset-password'
 import Protected from './protected'
-import Dashboard from '../pages/dashboard'
+import RperList from '../pages/rper-list'
 import Profile from '../pages/profile'
 
 function Router() {
@@ -16,7 +16,7 @@ function Router() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route element={<Protected />}>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/rper-list" element={<RperList />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>

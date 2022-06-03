@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProp> = ({ btnType }) => {
             Sign Out
           </button>
         ) : (
-          <Link to="/dashboard">
+          <Link to="/rper-list">
             <BsArrowLeft />
             Back
           </Link>

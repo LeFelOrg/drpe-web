@@ -83,7 +83,7 @@ const ForgotPassword: React.FC = () => {
   )
 
   if (user) {
-    return <Navigate to="/dashboard" />
+    return <Navigate to="/rper-list" />
   }
 
   return (

@@ -80,7 +80,7 @@ const SignUp: React.FC = () => {
   )
 
   if (user) {
-    return <Navigate to="/dashboard" />
+    return <Navigate to="/rper-list" />
   }
 
   return (

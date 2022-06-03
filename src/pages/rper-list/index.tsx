@@ -13,7 +13,7 @@ import {
   SortList,
 } from './styles'
 
-const Dashboard: React.FC = () => {
+const RperList: React.FC = () => {
   const [toggleSort, setToggleSort] = useState(false)
   const modalRef = useRef<any>(null)
 
@@ -132,4 +132,4 @@ const Dashboard: React.FC = () => {
   )
 }
 
-export default Dashboard
+export default RperList

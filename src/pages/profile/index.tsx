@@ -145,7 +145,7 @@ const Profile: React.FC = () => {
   return (
     <Container>
       <header>
-        <Link to="/dashboard">
+        <Link to="/rper-list">
           <BsArrowLeft />
           Back
         </Link>
