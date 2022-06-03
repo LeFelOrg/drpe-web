@@ -6,6 +6,7 @@ import ResetPassword from '../pages/reset-password'
 import Protected from './protected'
 import RperList from '../pages/rper-list'
 import Profile from '../pages/profile'
+import Dashboard from '../pages/dashboard'
 
 function Router() {
   return (
@@ -18,6 +19,7 @@ function Router() {
         <Route element={<Protected />}>
           <Route path="/rper-list" element={<RperList />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Route>
       </Routes>
     </BrowserRouter>
