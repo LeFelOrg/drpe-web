@@ -15,7 +15,7 @@ import {
 
 const RperList: React.FC = () => {
   const [toggleSort, setToggleSort] = useState(false)
-  const modalRef = useRef<any>(null)
+  const modalRef = useRef<HTMLDialogElement>(null)
 
   const { user } = useAuth()
 
@@ -24,11 +24,11 @@ const RperList: React.FC = () => {
   }, [toggleSort])
 
   const openModal = useCallback(() => {
-    modalRef.current.showModal()
+    modalRef.current?.showModal()
   }, [modalRef])
 
   const closeModal = useCallback(() => {
-    modalRef.current.close()
+    modalRef.current?.close()
   }, [modalRef])
 
   return (
