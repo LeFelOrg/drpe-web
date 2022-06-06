@@ -1,20 +1,42 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+interface SubMenuProps {
+  toggle: boolean
+}
+
+const toggle = css`
+  display: none;
+`
 
 export const Main = styled.main`
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+  gap: 40px;
+  grid-template-areas:
+    'title'
+    'menu'
+    'content';
+
   h1 {
     font-size: 3.6rem;
     color: #ff0042;
+    margin-top: 20px;
+    grid-area: title;
   }
 `
 
-export const Menu = styled.div`
-  width: 253px;
+export const Menu = styled.aside`
+  width: 260px;
   padding: 24px;
   background-color: #ffffff;
-  border-radius: 12px 0px 0px 12px;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  grid-area: menu;
 
   h2 {
     font-size: 3.2rem;
@@ -22,6 +44,8 @@ export const Menu = styled.div`
     color: #7371ff;
     display: flex;
     align-self: center;
+    align-items: center;
+    gap: 16px;
   }
 
   span {
@@ -30,10 +54,8 @@ export const Menu = styled.div`
     color: #828282;
   }
 
-  div {
-    border-top: 1px solid #dde7f1;
-
-    section {
+  section {
+    div {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -42,26 +64,60 @@ export const Menu = styled.div`
         font-size: 1.4em;
         font-weight: 500;
         color: #828282;
-        padding: 0;
         background-color: transparent;
         border: 0;
+        padding: 8px 0;
+      }
+
+      button:focus {
+        background-color: #f0edee;
+        border-radius: 25px 0px 0px 25px;
+        width: calc(100% + 24px);
+        text-align: left;
       }
     }
-    section button:active {
-      background-color: #f0edee;
-      border-radius: 25px 0px 0px 25px;
-      width: calc(100% + 24px);
-      text-align: left;
-      padding: 8px 91px 8px 52px;
+    & + section {
+      border-top: 1px solid #dde7f1;
     }
   }
 `
 
-export const SubMenu = styled.button`
+export const SubMenu = styled.button<SubMenuProps>`
+  width: 100%;
+  margin: 24px 0 16px 0;
   font-size: 1.8rem;
   font-weight: 700;
   color: #7371ff;
-  padding: 0;
   background-color: transparent;
   border: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  svg {
+    color: #bdbdbd;
+    width: 32px;
+    height: 32px;
+  }
+
+  svg:first-child {
+    ${props => !props.toggle && toggle}
+  }
+
+  svg:last-child {
+    ${props => props.toggle && toggle}
+  }
+`
+
+export const Content = styled.div`
+  border: 1px solid black;
+  width: 320px;
+  height: 100px;
+  grid-area: content;
+`
+
+export const StatusBtn = styled.button`
+  width: 14px;
+  height: 14px;
+  border: 1px solid #7371ff;
 `
