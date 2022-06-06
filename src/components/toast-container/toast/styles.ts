@@ -59,7 +59,6 @@ export const Container = styled(animated.div)<ContainerProps>`
     border: 0;
     background-color: transparent;
     color: inherit;
-    cursor: pointer;
   }
 
   ${props =>

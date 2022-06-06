@@ -8,7 +8,7 @@ export const Container = styled.div`
     background-color: #7371ff;
     padding: 8px;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 1.4rem;
     font-weight: 500;
     opacity: 0;
     visibility: hidden;

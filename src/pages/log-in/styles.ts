@@ -60,6 +60,7 @@ export const Content = styled.div`
     text-decoration: none;
     color: #e62154;
     display: flex;
+    align-items: center;
     margin-top: 24px;
     transition: color 0.3s;
 

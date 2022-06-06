@@ -10,14 +10,13 @@ interface ContainerProps {
 export const Container = styled.div<ContainerProps>`
   width: 340px;
   height: 56px;
-  padding: 0;
+  padding: 16px;
   border-radius: 10px;
   border: 2px solid #ffffff;
   background-color: #ffffff;
   color: #433889;
   display: flex;
   align-items: center;
-  font-family: 'Roboto Slab', serif;
 
   & + div {
     margin-top: 8px;
@@ -46,7 +45,7 @@ export const Container = styled.div<ContainerProps>`
     flex: 1;
     background: transparent;
     border: none;
-    margin: 16px;
+    /* margin: 16px; */
     font-size: 1.8rem;
     color: #433889;
 
@@ -59,16 +58,12 @@ export const Container = styled.div<ContainerProps>`
     }
   }
 
-  svg {
-    margin-left: 16px;
+  > svg {
+    margin-right: 16px;
   }
 `
 
 export const Error = styled(Tooltip)`
-  svg {
-    margin-right: 16px;
-  }
-
   span {
     background-color: #c53030;
     color: #ffffff;

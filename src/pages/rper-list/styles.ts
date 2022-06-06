@@ -23,15 +23,23 @@ export const Main = styled.main`
     margin-bottom: 20px;
   }
 
+  > button {
+    width: 100%;
+  }
+
   @media screen and (min-width: 720px) {
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 10px;
     max-width: 700px;
     margin: 0 auto;
 
     h1 {
       grid-column: 1/3;
     }
+  }
+
+  @media screen and (min-width: 768px) {
+    gap: 20px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -44,10 +52,6 @@ export const Main = styled.main`
     h1 {
       margin: 0;
       justify-self: start;
-    }
-
-    button {
-      width: 100%;
     }
   }
 `
@@ -68,7 +72,6 @@ export const SortContainer = styled.div`
 
 export const SortBtn = styled.button<SortProps>`
   width: 100%;
-  font-family: 'Roboto Slab', serif;
   font-size: 1.8rem;
   color: #433889;
   background-color: #f2f4f8;
@@ -76,7 +79,6 @@ export const SortBtn = styled.button<SortProps>`
   padding: 16px;
   border-radius: 12px;
   position: relative;
-  cursor: pointer;
   transition: background-color 0.3s;
 
   &:hover {
@@ -107,14 +109,13 @@ export const SortList = styled.ul<SortProps>`
   color: #433889;
   position: absolute;
   background-color: ${shade(0.1, '#f2f4f8')};
-  cursor: pointer;
   border-radius: 0 0 10px 10px;
   top: 56px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
   transition: 0.6s;
-  height: 152px;
+  height: calc(100% * 3);
   overflow-y: hidden;
 
   ${props =>
@@ -127,10 +128,8 @@ export const SortList = styled.ul<SortProps>`
   li {
     padding: 16px;
     text-align: center;
-
-    & + li {
-      border-top: 1px solid #f2f4f8;
-    }
+    border-top: 1px solid #f2f4f8;
+    cursor: pointer;
 
     &:hover {
       background-color: ${shade(0.2, '#f2f4f8')};
@@ -139,24 +138,24 @@ export const SortList = styled.ul<SortProps>`
 `
 
 export const InputContainer = styled.div`
-  width: 340px;
+  width: 100%;
   height: 56px;
+  padding: 8px;
   border-radius: 10px;
   background-color: #ffffff;
   color: #433889;
   display: flex;
   align-items: center;
   overflow: hidden;
+  position: relative;
 
   input {
     display: flex;
     max-width: 200px;
     background: transparent;
     border: none;
-    margin: 8px;
     font-size: 1.8rem;
     color: #433889;
-    font-family: 'Roboto Slab', serif;
 
     &::placeholder {
       color: #433889;
@@ -168,19 +167,18 @@ export const InputContainer = styled.div`
   }
 
   svg {
-    margin-left: 16px;
+    margin-right: 16px;
     width: 20px;
     height: 20px;
   }
 
   button {
-    font-family: 'Roboto Slab', serif;
     font-size: 2rem;
-    padding: 0;
-    width: 84px;
+    padding: 0 8px;
+    position: absolute;
+    right: 0;
     height: 100%;
     border: 0;
-    cursor: pointer;
     background-color: #e62154;
     color: #ffffff;
     transition: background-color 0.3s;
@@ -192,7 +190,6 @@ export const InputContainer = styled.div`
 
   @media screen and (min-width: 720px) {
     grid-column: 1/3;
-    width: 100%;
 
     input {
       display: flex;
@@ -209,13 +206,12 @@ export const InputContainer = styled.div`
 
 export const Card = styled.article`
   background-color: #ffffff;
-  width: 300px;
   padding: 20px;
   border-radius: 10px;
   margin-top: 20px;
 
   img {
-    width: 300px;
+    width: 314px;
     height: 280px;
     border-radius: 10px 10px 0 0;
   }
@@ -223,7 +219,7 @@ export const Card = styled.article`
   div {
     background-color: #f0edee;
     border-radius: 0 0 10px 10px;
-    width: 300px;
+    width: 314px;
 
     p {
       color: #7371ff;
@@ -259,82 +255,78 @@ export const Card = styled.article`
   }
 `
 export const Modal = styled.dialog`
+  margin: auto;
   border-radius: 20px;
   border: 0;
   width: 300px;
-  box-sizing: border-box;
+  position: relative;
 
   &::backdrop {
     background-color: #00000080;
+  }
+
+  > button {
+    border: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 12px;
+    right: 24px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
   }
 
   form {
     padding: 20px;
     display: flex;
     flex-direction: column;
-  }
 
-  label {
-    font-size: 2.4rem;
-    color: #7371ff;
-  }
-
-  input {
-    margin: 16px 0;
-    border: 0;
-    border-bottom: 1px solid black;
-    font-family: 'Roboto Slab', serif;
-    font-size: 1.6rem;
-
-    &:focus {
-      outline: 0;
+    label {
+      font-size: 2.4rem;
+      color: #7371ff;
     }
-  }
 
-  p {
-    margin: 16px 0;
-    font-size: 1.4rem;
-  }
+    input {
+      margin: 16px 0;
+      border: 0;
+      border-bottom: 1px solid black;
+      font-size: 1.6rem;
 
-  span {
-    font-weight: 700;
-    color: #7371ff;
-  }
+      &:focus {
+        outline: 0;
+      }
+    }
 
-  strong {
-    color: #ff0042;
-  }
+    p {
+      margin: 16px 0;
+      font-size: 1.4rem;
+    }
 
-  div {
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
+    span {
+      font-weight: 700;
+      color: #7371ff;
+    }
+
+    strong {
+      color: #ff0042;
+    }
 
     button {
-      width: 100%;
+      margin: 0 auto;
+      width: 50%;
       border: 0;
-      background-color: #f2f4f8;
-      color: #433889;
+      background-color: #e62154;
+      color: #f0edee;
       border-radius: 12px;
       font-size: 1.6rem;
       padding: 8px;
-      font-family: 'Roboto Slab', serif;
       font-weight: 500;
-      border: 1px solid #c3bedd;
-      cursor: pointer;
       transition: all 0.3s;
 
       &:hover {
-        background-color: ${shade(0.2, '#f2f4f8')};
-      }
-
-      & + button {
-        background-color: #e62154;
-        color: #f0edee;
-
-        &:hover {
-          background-color: ${shade(0.2, '#e62154')};
-        }
+        background-color: ${shade(0.2, '#e62154')};
       }
     }
   }
@@ -344,23 +336,30 @@ export const Modal = styled.dialog`
     width: 600px;
     height: 400px;
 
+    > button {
+      top: 24px;
+      right: 32px;
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
     form {
       padding: 30px 40px;
-    }
+      margin-top: 40px;
 
-    input {
-      margin-top: 30px;
-      margin-bottom: 90px;
-      font-size: 1.8rem;
-    }
+      input {
+        margin-top: 30px;
+        margin-bottom: 90px;
+        font-size: 1.8rem;
+      }
 
-    p {
-      margin-bottom: 40px;
-      font-size: 1.6rem;
-    }
-
-    div {
-      gap: 40px;
+      p {
+        margin-bottom: 40px;
+        font-size: 1.6rem;
+      }
     }
   }
 `

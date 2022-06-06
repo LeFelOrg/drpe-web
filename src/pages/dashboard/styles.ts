@@ -12,7 +12,6 @@ export const Menu = styled.div`
   padding: 24px;
   background-color: #ffffff;
   border-radius: 12px 0px 0px 12px;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -40,14 +39,12 @@ export const Menu = styled.div`
       align-items: flex-start;
 
       button {
-        font-family: 'Roboto Slab', serif;
         font-size: 1.4em;
         font-weight: 500;
         color: #828282;
         padding: 0;
         background-color: transparent;
         border: 0;
-        cursor: pointer;
       }
     }
     section button:active {
@@ -61,12 +58,10 @@ export const Menu = styled.div`
 `
 
 export const SubMenu = styled.button`
-  font-family: 'Roboto Slab', serif;
   font-size: 1.8rem;
   font-weight: 700;
   color: #7371ff;
   padding: 0;
   background-color: transparent;
   border: 0;
-  cursor: pointer;
 `

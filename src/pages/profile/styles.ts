@@ -13,11 +13,9 @@ export const Container = styled.div`
     justify-content: flex-end;
 
     a {
-      font-family: 'Roboto Slab', serif;
       font-size: 0;
       font-weight: 500;
       color: #e62154;
-      cursor: pointer;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -110,7 +108,6 @@ export const AvatarInput = styled.div`
     right: 8px;
     bottom: 8px;
     border: 0;
-    cursor: pointer;
     transition: background-color 0.3s;
 
     input {

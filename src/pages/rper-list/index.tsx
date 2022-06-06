@@ -1,5 +1,6 @@
 import { useCallback, useState, useRef } from 'react'
 import { FiSearch, FiChevronDown, FiChevronUp } from 'react-icons/fi'
+import { AiOutlineClose } from 'react-icons/ai'
 import { useAuth } from '../../contexts/auth-context'
 import Header from '../../components/header'
 import Button from '../../components/button'
@@ -112,6 +113,9 @@ const RperList: React.FC = () => {
           </div>
         </Card>
         <Modal ref={modalRef}>
+          <button type="button" onClick={closeModal}>
+            <AiOutlineClose />
+          </button>
           <form>
             <label htmlFor="rperName">RPER Name:</label>
             <input type="text" name="rperName" id="rperName" />
@@ -119,12 +123,7 @@ const RperList: React.FC = () => {
               <span>Coordinator: </span>
               <strong>{user.name}</strong>
             </p>
-            <div>
-              <button type="button" onClick={closeModal}>
-                Cancel
-              </button>
-              <button>Create RPER</button>
-            </div>
+            <button>Create RPER</button>
           </form>
         </Modal>
       </Main>

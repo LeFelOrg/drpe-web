@@ -8,13 +8,11 @@ interface HeaderProp {
 const btnTypeVariations = {
   signOut: css`
     button {
-      font-family: 'Roboto Slab', serif;
       font-size: 0;
       font-weight: 500;
       background-color: transparent;
       border: 0;
       color: #e62154;
-      cursor: pointer;
       display: flex;
       align-items: flex-end;
       gap: 12px;
@@ -37,11 +35,9 @@ const btnTypeVariations = {
   `,
   back: css`
     a {
-      font-family: 'Roboto Slab', serif;
       font-size: 0;
       font-weight: 500;
       color: #e62154;
-      cursor: pointer;
       display: flex;
       align-items: center;
       gap: 12px;
