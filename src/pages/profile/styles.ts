@@ -109,6 +109,7 @@ export const AvatarInput = styled.div`
     bottom: 8px;
     border: 0;
     transition: background-color 0.3s;
+    cursor: pointer;
 
     input {
       display: none;
