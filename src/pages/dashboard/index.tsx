@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react'
 import { MdMenu } from 'react-icons/md'
 import { IoMdArrowDropup, IoMdArrowDropdown } from 'react-icons/io'
 import Header from '../../components/header'
+import Summary from './summary'
 import { Main, Menu, SubMenuTitle, SubMenuItems, Content } from './styles'
 
 const Dashboard: React.FC = () => {
@@ -93,7 +94,9 @@ const Dashboard: React.FC = () => {
             </SubMenuItems>
           </section>
         </Menu>
-        <Content></Content>
+        <Content>
+          <Summary />
+        </Content>
       </Main>
     </>
   )

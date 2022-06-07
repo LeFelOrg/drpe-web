@@ -8,6 +8,11 @@ const toggle = css`
   display: none;
 `
 
+const hide = css`
+  visibility: hidden;
+  height: 0px;
+`
+
 export const Main = styled.main`
   margin: 0 auto;
   padding: 20px;
@@ -20,11 +25,24 @@ export const Main = styled.main`
     'menu'
     'content';
 
-  h1 {
+  > h1 {
     font-size: 3.6rem;
     color: #ff0042;
     margin-top: 20px;
     grid-area: title;
+  }
+
+  @media screen and (min-width: 768px) {
+    grid-template-areas:
+      'title title'
+      'menu content';
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding: 20px 40px;
+    grid-template-areas:
+      'title title title'
+      'menu content content';
   }
 `
 
@@ -59,6 +77,10 @@ export const Menu = styled.aside`
       border-top: 1px solid #dde7f1;
     }
   }
+
+  @media screen and (min-width: 768px) {
+    border-radius: 12px 0 0 12px;
+  }
 `
 
 export const SubMenuTitle = styled.button<SubMenuProps>`
@@ -86,6 +108,21 @@ export const SubMenuTitle = styled.button<SubMenuProps>`
   svg:last-child {
     ${props => props.toggle && toggle}
   }
+
+  @media screen and (min-width: 768px) {
+    svg:first-child,
+    svg:last-child {
+      display: block;
+    }
+
+    svg:first-child {
+      ${props => props.toggle && toggle}
+    }
+
+    svg:last-child {
+      ${props => !props.toggle && toggle}
+    }
+  }
 `
 
 export const SubMenuItems = styled.div<SubMenuProps>`
@@ -93,15 +130,17 @@ export const SubMenuItems = styled.div<SubMenuProps>`
   flex-direction: column;
   align-items: flex-start;
 
-  ${props =>
-    !props.toggle &&
-    css`
-      visibility: hidden;
-      height: 0px;
-    `}
+  ${props => !props.toggle && hide}
+
+  @media screen and (min-width: 768px) {
+    visibility: visible;
+    height: 100%;
+
+    ${props => props.toggle && hide}
+  }
 
   button {
-    font-size: 1.4em;
+    font-size: 1.4rem;
     font-weight: 500;
     color: #828282;
     background-color: transparent;
@@ -122,6 +161,18 @@ export const Content = styled.div`
   width: 320px;
   height: 100px;
   grid-area: content;
+
+  @media screen and (min-width: 768px) {
+    width: 428px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 644px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 900px;
+  }
 `
 
 export const StatusBtn = styled.button`
