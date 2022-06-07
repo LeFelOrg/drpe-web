@@ -157,9 +157,7 @@ export const SubMenuItems = styled.div<SubMenuProps>`
 `
 
 export const Content = styled.div`
-  border: 1px solid black;
   width: 320px;
-  height: 100px;
   grid-area: content;
 
   @media screen and (min-width: 768px) {
