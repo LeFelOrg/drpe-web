@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 interface SubMenuProps {
-  toggle: boolean
+  toggle?: boolean
 }
 
 const toggle = css`
@@ -55,34 +55,13 @@ export const Menu = styled.aside`
   }
 
   section {
-    div {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-
-      button {
-        font-size: 1.4em;
-        font-weight: 500;
-        color: #828282;
-        background-color: transparent;
-        border: 0;
-        padding: 8px 0;
-      }
-
-      button:focus {
-        background-color: #f0edee;
-        border-radius: 25px 0px 0px 25px;
-        width: calc(100% + 24px);
-        text-align: left;
-      }
-    }
     & + section {
       border-top: 1px solid #dde7f1;
     }
   }
 `
 
-export const SubMenu = styled.button<SubMenuProps>`
+export const SubMenuTitle = styled.button<SubMenuProps>`
   width: 100%;
   margin: 24px 0 16px 0;
   font-size: 1.8rem;
@@ -106,6 +85,35 @@ export const SubMenu = styled.button<SubMenuProps>`
 
   svg:last-child {
     ${props => props.toggle && toggle}
+  }
+`
+
+export const SubMenuItems = styled.div<SubMenuProps>`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  ${props =>
+    !props.toggle &&
+    css`
+      visibility: hidden;
+      height: 0px;
+    `}
+
+  button {
+    font-size: 1.4em;
+    font-weight: 500;
+    color: #828282;
+    background-color: transparent;
+    border: 0;
+    padding: 8px 0;
+  }
+
+  button:focus {
+    background-color: #f0edee;
+    border-radius: 25px 0px 0px 25px;
+    width: calc(100% + 24px);
+    text-align: left;
   }
 `
 

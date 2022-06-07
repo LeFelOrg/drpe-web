@@ -2,12 +2,12 @@ import { useCallback, useState } from 'react'
 import { MdMenu } from 'react-icons/md'
 import { IoMdArrowDropup, IoMdArrowDropdown } from 'react-icons/io'
 import Header from '../../components/header'
-import { Main, Menu, SubMenu, Content } from './styles'
+import { Main, Menu, SubMenuTitle, SubMenuItems, Content } from './styles'
 
 const Dashboard: React.FC = () => {
-  const [togglePreparation, setTogglePreparation] = useState(true)
-  const [toggleFieldwork, setToggleFieldwork] = useState(true)
-  const [toggleFinalization, setToggleFinalization] = useState(true)
+  const [togglePreparation, setTogglePreparation] = useState(false)
+  const [toggleFieldwork, setToggleFieldwork] = useState(false)
+  const [toggleFinalization, setToggleFinalization] = useState(false)
 
   const togglePreparationBtn = useCallback(() => {
     togglePreparation ? setTogglePreparation(false) : setTogglePreparation(true)
@@ -21,7 +21,7 @@ const Dashboard: React.FC = () => {
     toggleFinalization
       ? setToggleFinalization(false)
       : setToggleFinalization(true)
-  }, [setToggleFinalization])
+  }, [toggleFinalization])
 
   return (
     <>
@@ -33,17 +33,20 @@ const Dashboard: React.FC = () => {
             <MdMenu /> Menu
           </h2>
           <section>
-            <div>
+            <SubMenuItems toggle={true}>
               <button>Summary</button>
-            </div>
+            </SubMenuItems>
           </section>
           <section>
-            <SubMenu onClick={togglePreparationBtn} toggle={togglePreparation}>
+            <SubMenuTitle
+              onClick={togglePreparationBtn}
+              toggle={togglePreparation}
+            >
               Preparation
               <IoMdArrowDropup />
               <IoMdArrowDropdown />
-            </SubMenu>
-            <div>
+            </SubMenuTitle>
+            <SubMenuItems toggle={togglePreparation}>
               <button>Team</button>
               <button>Secondary Data</button>
               <button>Contact Collectivity</button>
@@ -51,15 +54,15 @@ const Dashboard: React.FC = () => {
               <button>Focus Group Guide</button>
               <button>Themes Framework</button>
               <button>Tasks and Calendar</button>
-            </div>
+            </SubMenuItems>
           </section>
           <section>
-            <SubMenu onClick={toggleFieldworkBtn} toggle={toggleFieldwork}>
+            <SubMenuTitle onClick={toggleFieldworkBtn} toggle={toggleFieldwork}>
               Fieldwork
               <IoMdArrowDropup />
               <IoMdArrowDropdown />
-            </SubMenu>
-            <div>
+            </SubMenuTitle>
+            <SubMenuItems toggle={toggleFieldwork}>
               <button>Collectivity Registration</button>
               <button>Presentation</button>
               <button>Historical Mapping</button>
@@ -71,23 +74,23 @@ const Dashboard: React.FC = () => {
               <button>Interview & Focus Group</button>
               <button>Reality and Obj. Matrix</button>
               <button>Election of Priorities</button>
-            </div>
+            </SubMenuItems>
           </section>
           <section>
-            <SubMenu
+            <SubMenuTitle
               onClick={toggleFinalizationBtn}
               toggle={toggleFinalization}
             >
               Finalization
               <IoMdArrowDropup />
               <IoMdArrowDropdown />
-            </SubMenu>
-            <div>
+            </SubMenuTitle>
+            <SubMenuItems toggle={toggleFinalization}>
               <button>Extra Information</button>
               <button>Final Considerations</button>
               <button>Acknoledgment</button>
               <button>Generate Final Report</button>
-            </div>
+            </SubMenuItems>
           </section>
         </Menu>
         <Content></Content>
