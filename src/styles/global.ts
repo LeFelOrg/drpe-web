@@ -6,12 +6,12 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto Slab', serif;
-    font-size: 62.5%;
   }
 
 	html {
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
+    font-size: 62.5%;
 	}
 
 	body {

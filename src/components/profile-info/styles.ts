@@ -37,6 +37,7 @@ export const Container = styled.div`
     border-radius: 50%;
   }
 `
+
 export const PlaceholderLoading = styled.div`
   min-width: 56px;
   min-height: 56px;

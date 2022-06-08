@@ -96,6 +96,7 @@ export const HeaderContainer = styled.header`
     padding: 0 160px;
   }
 `
+
 export const HeaderContent = styled.div`
   display: flex;
 

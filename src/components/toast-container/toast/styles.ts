@@ -22,7 +22,7 @@ const toastTypeVariations = {
 }
 
 export const Container = styled(animated.div)<ContainerProps>`
-  width: 360px;
+  width: 320px;
   position: relative;
   padding: 16px 30px 16px 16px;
   border-radius: 10px;
@@ -66,4 +66,8 @@ export const Container = styled(animated.div)<ContainerProps>`
     css`
       align-items: center;
     `}
+
+  @media screen and (min-width: 600px) {
+    width: 360px;
+  }
 `
