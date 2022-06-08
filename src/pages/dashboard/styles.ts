@@ -33,21 +33,24 @@ export const Main = styled.main`
   }
 
   @media screen and (min-width: 768px) {
+    grid-template-rows: minmax(0, auto) minmax(0, auto) 1fr;
     grid-template-areas:
       'title title'
-      'menu content';
+      'menu content'
+      '. content';
   }
 
   @media screen and (min-width: 1024px) {
     padding: 20px 40px;
     grid-template-areas:
       'title title title'
-      'menu content content';
+      'menu content content'
+      '. content content';
   }
 `
 
 export const Menu = styled.aside`
-  width: 260px;
+  width: 100%;
   padding: 24px;
   background-color: #ffffff;
   border-radius: 12px;
@@ -79,6 +82,7 @@ export const Menu = styled.aside`
   }
 
   @media screen and (min-width: 768px) {
+    width: 260px;
     border-radius: 12px 0 0 12px;
   }
 `
@@ -126,33 +130,51 @@ export const SubMenuTitle = styled.button<SubMenuProps>`
 `
 
 export const SubMenuItems = styled.div<SubMenuProps>`
+  &:first-child {
+    visibility: visible;
+    margin-bottom: 40px;
+  }
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 
   ${props => !props.toggle && hide}
 
-  @media screen and (min-width: 768px) {
-    visibility: visible;
-    height: 100%;
-
-    ${props => props.toggle && hide}
-  }
-
-  button {
+  > button {
     font-size: 1.4rem;
     font-weight: 500;
     color: #828282;
     background-color: transparent;
     border: 0;
     padding: 8px 0;
+    display: flex;
+    align-items: center;
   }
 
-  button:focus {
+  > button:focus {
     background-color: #f0edee;
     border-radius: 25px 0px 0px 25px;
     width: calc(100% + 24px);
     text-align: left;
+  }
+
+  svg {
+    width: 22px;
+    height: 22px;
+    color: #ff0042;
+    margin-right: 8px;
+  }
+
+  @media screen and (min-width: 768px) {
+    &:first-child {
+      margin-bottom: 0;
+    }
+
+    visibility: visible;
+    height: 100%;
+
+    ${props => props.toggle && hide}
   }
 `
 
@@ -171,10 +193,4 @@ export const Content = styled.div`
   @media screen and (min-width: 1280px) {
     width: 900px;
   }
-`
-
-export const StatusBtn = styled.button`
-  width: 14px;
-  height: 14px;
-  border: 1px solid #7371ff;
 `
