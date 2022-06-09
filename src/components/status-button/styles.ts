@@ -13,6 +13,7 @@ export const Container = styled.div<StatusProps>`
     width: 14px;
     height: 14px;
     color: #7371ff;
+    transform: translateY(15%);
   }
 `
 
@@ -26,6 +27,8 @@ export const StatusList = styled.ul<StatusProps>`
   height: 144px;
   width: 160px;
   position: absolute;
+  left: 16px;
+  top: -10px;
 
   ${props =>
     !props.toggle &&
@@ -37,6 +40,7 @@ export const StatusList = styled.ul<StatusProps>`
   li {
     display: flex;
     align-items: center;
+    gap: 8px;
     list-style: none;
     padding: 8px 16px;
     color: #433889;

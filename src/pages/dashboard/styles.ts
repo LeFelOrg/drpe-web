@@ -133,6 +133,10 @@ export const SubMenuItems = styled.div<SubMenuProps>`
   &:first-child {
     visibility: visible;
     margin-bottom: 40px;
+
+    button {
+      gap: 22px;
+    }
   }
 
   display: flex;
@@ -150,6 +154,14 @@ export const SubMenuItems = styled.div<SubMenuProps>`
     padding: 8px 0;
     display: flex;
     align-items: center;
+    gap: 4px;
+
+    > svg {
+      width: 22px;
+      height: 22px;
+      color: #ff0042;
+      margin-right: 4px;
+    }
   }
 
   > button:focus {
@@ -157,13 +169,6 @@ export const SubMenuItems = styled.div<SubMenuProps>`
     border-radius: 25px 0px 0px 25px;
     width: calc(100% + 24px);
     text-align: left;
-  }
-
-  svg {
-    width: 22px;
-    height: 22px;
-    color: #ff0042;
-    margin-right: 8px;
   }
 
   @media screen and (min-width: 768px) {

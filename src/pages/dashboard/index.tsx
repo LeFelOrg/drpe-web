@@ -53,33 +53,39 @@ const Dashboard: React.FC = () => {
               <IoMdArrowDropdown />
             </SubMenuTitle>
             <SubMenuItems toggle={togglePreparation}>
-              <StatusButton />
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Team
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Secondary Data
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Contact Collectivity
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Interview Guide
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Focus Group Guide
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Themes Framework
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Tasks and Calendar
               </button>
             </SubMenuItems>
@@ -93,46 +99,57 @@ const Dashboard: React.FC = () => {
             <SubMenuItems toggle={toggleFieldwork}>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Collectivity Registration
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Presentation
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Historical Mapping
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Transect Walk
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Venn Diagram
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Seasonal Calendar
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Daily Routines
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Input and Output
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Interview & Focus Group
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Reality and Obj. Matrix
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Election of Priorities
               </button>
             </SubMenuItems>
@@ -149,18 +166,22 @@ const Dashboard: React.FC = () => {
             <SubMenuItems toggle={toggleFinalization}>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Extra Information
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Final Considerations
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Acknoledgment
               </button>
               <button>
                 <RiExchangeFill />
+                <StatusButton />
                 Generate Final Report
               </button>
             </SubMenuItems>
