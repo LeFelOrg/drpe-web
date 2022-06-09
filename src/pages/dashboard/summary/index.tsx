@@ -8,7 +8,10 @@ import {
   Progress,
   ProgressBarContainer,
   ProgressBar,
+  CarouselContainer,
+  CarouselControls,
   Carousel,
+  CarouselIndicators,
 } from './styles'
 
 const Summary: React.FC = () => {
@@ -44,14 +47,37 @@ const Summary: React.FC = () => {
           <strong>{progress}%</strong>
         </ProgressBarContainer>
       </Progress>
-      <Carousel>
+      <CarouselContainer>
         <h3>Pictures & Photos</h3>
         <div>
-          <FiChevronLeft size={20} />
-          <FiChevronRight size={20} />
-          <img src="https://picsum.photos/248/352" alt="" />
+          <CarouselControls>
+            <button>
+              <FiChevronLeft />
+            </button>
+            <button>
+              <FiChevronRight />
+            </button>
+          </CarouselControls>
+          <Carousel>
+            <ul>
+              <li>
+                <img src="https://picsum.photos/248/352" alt="" />
+              </li>
+              <li>
+                <img src="https://picsum.photos/248/352" alt="" />
+              </li>
+              <li>
+                <img src="https://picsum.photos/248/352" alt="" />
+              </li>
+            </ul>
+          </Carousel>
+          <CarouselIndicators>
+            <button></button>
+            <button></button>
+            <button></button>
+          </CarouselIndicators>
         </div>
-      </Carousel>
+      </CarouselContainer>
     </Container>
   )
 }
