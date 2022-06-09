@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, useCallback, useRef, useState } from 'react'
+import { InputHTMLAttributes, useCallback, useRef } from 'react'
 import * as Yup from 'yup'
 import { FiMail, FiLock, FiUser, FiCamera } from 'react-icons/fi'
 import { BsArrowLeft } from 'react-icons/bs'
