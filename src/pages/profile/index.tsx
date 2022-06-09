@@ -31,8 +31,6 @@ const Profile: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
   const { user, updatedUser } = useAuth()
   const { addToast } = useToast()
-  const [name, setName] = useState(user.name)
-  const [email, setEmail] = useState(user.email)
 
   const navigate = useNavigate()
   const location = useLocation() as unknown as LocationProps
@@ -113,16 +111,6 @@ const Profile: React.FC = () => {
     [addToast, navigate],
   )
 
-  const handleChange = useCallback(
-    (
-      e: React.ChangeEvent<HTMLInputElement>,
-      setType: React.Dispatch<React.SetStateAction<string>>,
-    ) => {
-      setType(e.target.value)
-    },
-    [],
-  )
-
   const handleAvatarChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.files) {
@@ -165,23 +153,25 @@ const Profile: React.FC = () => {
             <input type="file" id="avatar" onChange={handleAvatarChange} />
           </label>
         </AvatarInput>
-        <Form ref={formRef} onSubmit={handleSubmit}>
+        <Form
+          ref={formRef}
+          onSubmit={handleSubmit}
+          initialData={{ name: user.name, email: user.email }}
+        >
           <h1>My Profile</h1>
           <Input
             type="text"
             name="name"
             placeholder="Name"
             icon={FiUser}
-            value={name}
-            onChange={e => handleChange(e, setName)}
+            disabled
           />
           <Input
             type="text"
             name="email"
             placeholder="Email"
             icon={FiMail}
-            value={email}
-            onChange={e => handleChange(e, setEmail)}
+            disabled
           />
           <Input
             type="password"
