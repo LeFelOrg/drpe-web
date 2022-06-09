@@ -9,34 +9,45 @@ import { Container, StatusList } from './styles'
 
 const StatusButton: React.FC = () => {
   const [toggleStatus, setToggleStatus] = useState(false)
+  const [status, setStatus] = useState('unstarted')
 
   const toggleStatusBtn = useCallback(() => {
     toggleStatus ? setToggleStatus(false) : setToggleStatus(true)
   }, [toggleStatus])
 
-  console.log(toggleStatus)
+  const currentStatus = useCallback(() => {
+    if (status === 'inProgress') {
+      return <MdErrorOutline />
+    }
+
+    if (status === 'completed') {
+      return <MdLens />
+    }
+
+    if (status === 'notApplicable') {
+      return <MdCancel />
+    }
+
+    return <MdPanoramaFishEye />
+  }, [status])
 
   return (
     <Container toggle={toggleStatus} onClick={toggleStatusBtn}>
-      <MdPanoramaFishEye />
-      {/* <MdErrorOutline />
-      <MdLens />
-      <MdCancel /> */}
-
+      {currentStatus()}
       <StatusList toggle={toggleStatus}>
-        <li>
+        <li onClick={() => setStatus('inProgress')}>
           <MdErrorOutline />
           In Progress
         </li>
-        <li>
+        <li onClick={() => setStatus('completed')}>
           <MdLens />
           Completed
         </li>
-        <li>
+        <li onClick={() => setStatus('notApplicable')}>
           <MdCancel />
           Not Applicable
         </li>
-        <li>
+        <li onClick={() => setStatus('unstarted')}>
           <MdPanoramaFishEye />
           Unstarted
         </li>
