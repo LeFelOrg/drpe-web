@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+interface ProgressPercent {
+  progress: number
+}
+
 export const Container = styled.div`
   h2 {
     font-size: 3.2rem;
@@ -144,5 +148,32 @@ export const PlaceholderLoading = styled.div`
     from {
       transform: translateX(-100%);
     }
+  }
+`
+
+export const ProgressBarContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 16px;
+
+  > strong {
+    font-size: 2rem;
+    color: #ff0042;
+  }
+`
+
+export const ProgressBar = styled.div<ProgressPercent>`
+  width: 100%;
+  height: 20px;
+  border-radius: 40px;
+  background-color: #f0edee;
+
+  > div {
+    height: 100%;
+    border-radius: 40px;
+    background-color: #02004d;
+    transition: all 0.3s;
+    width: ${props => props.progress}%;
   }
 `

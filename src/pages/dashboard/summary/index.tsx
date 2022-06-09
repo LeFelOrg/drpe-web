@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import {
   Container,
@@ -5,10 +6,14 @@ import {
   PlaceholderLoading,
   Info,
   Progress,
+  ProgressBarContainer,
+  ProgressBar,
   Carousel,
 } from './styles'
 
 const Summary: React.FC = () => {
+  const [progress, setProgress] = useState(70)
+
   return (
     <Container>
       <h2>SUMMARY</h2>
@@ -32,6 +37,12 @@ const Summary: React.FC = () => {
       </Info>
       <Progress>
         <h3>RPER Application Progress</h3>
+        <ProgressBarContainer>
+          <ProgressBar progress={progress}>
+            <div></div>
+          </ProgressBar>
+          <strong>{progress}%</strong>
+        </ProgressBarContainer>
       </Progress>
       <Carousel>
         <h3>Pictures & Photos</h3>
