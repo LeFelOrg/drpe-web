@@ -1,5 +1,5 @@
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
-import { useRef } from 'react'
+import { ReactNode, useRef } from 'react'
 import Slider from 'react-slick'
 import {
   CarouselContainer,
@@ -22,7 +22,9 @@ const Carousel = () => {
     autoplaySpeed: 4000,
     pauseOnHover: true,
     arrows: false,
-    appendDots: (dots: any) => <CarouselIndicators>{dots}</CarouselIndicators>,
+    appendDots: (dots: ReactNode) => (
+      <CarouselIndicators>{dots}</CarouselIndicators>
+    ),
   }
 
   return (
