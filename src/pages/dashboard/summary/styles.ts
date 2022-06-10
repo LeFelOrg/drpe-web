@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { shade } from 'polished'
 
 interface ProgressPercent {
   progress: number
@@ -169,71 +168,5 @@ export const ProgressBar = styled.div<ProgressPercent>`
     background-color: #02004d;
     transition: all 0.3s;
     width: ${props => props.progress}%;
-  }
-`
-
-export const CarouselContainer = styled.div`
-  width: 320px;
-  padding: 16px 24px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
-  grid-area: carousel;
-`
-
-export const CarouselControls = styled.div`
-  display: flex;
-  justify-content: space-around;
-
-  button {
-    margin: 16px 0;
-    background-color: transparent;
-    border: 0;
-    cursor: pointer;
-    transition: all 0.3s;
-
-    svg {
-      width: 20px;
-      height: 20px;
-      color: #ff0042;
-
-      &:hover {
-        color: ${shade(0.2, '#e62154')};
-      }
-    }
-  }
-`
-
-export const Carousel = styled.div`
-  ul {
-    display: flex;
-    gap: 24px;
-  }
-
-  li {
-    list-style: none;
-    width: 100%;
-  }
-
-  img {
-    width: 248px;
-    height: 352px;
-    border-radius: 10px;
-  }
-`
-
-export const CarouselIndicators = styled.div`
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-
-  > button {
-    border: 0;
-    border-radius: 50%;
-    width: 10px;
-    height: 10px;
-    background-color: #0000004d;
   }
 `
