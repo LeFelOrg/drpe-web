@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { RiExchangeFill } from 'react-icons/ri'
 import Carousel from './carousel'
 import {
   Container,
@@ -15,7 +16,10 @@ const Summary: React.FC = () => {
 
   return (
     <Container>
-      <h2>SUMMARY</h2>
+      <h2>
+        <RiExchangeFill />
+        SUMMARY
+      </h2>
       <Team>
         <h3>Team</h3>
         <article>

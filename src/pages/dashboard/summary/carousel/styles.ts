@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import { shade } from 'polished'
 
 export const CarouselContainer = styled.div`
-  width: 320px;
   height: 520px;
   padding: 16px 24px;
   background-color: #ffffff;
