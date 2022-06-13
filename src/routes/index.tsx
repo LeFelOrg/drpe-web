@@ -8,6 +8,7 @@ import RperList from '../pages/rper-list'
 import Profile from '../pages/profile'
 import Dashboard from '../pages/dashboard'
 import Summary from '../pages/dashboard/summary'
+import Team from '../pages/dashboard/team'
 import SecondaryData from '../pages/dashboard/secondary-data'
 
 function Router() {
@@ -23,6 +24,7 @@ function Router() {
           <Route path="/profile" element={<Profile />} />
           <Route element={<Dashboard />}>
             <Route path="/dashboard" element={<Summary />} />
+            <Route path="/dashboard/team" element={<Team />} />
             <Route
               path="/dashboard/secondary-data"
               element={<SecondaryData />}
