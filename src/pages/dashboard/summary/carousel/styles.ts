@@ -9,6 +9,10 @@ export const CarouselContainer = styled.div`
   box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.25);
   overflow: hidden;
   grid-area: carousel;
+
+  @media screen and (min-width: 1024px) {
+    height: 600px;
+  }
 `
 
 export const CarouselControls = styled.div`
@@ -39,6 +43,13 @@ export const CarouselSlides = styled.div`
     width: 248px;
     height: 352px;
     border-radius: 10px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    img {
+      width: 314px;
+      height: 422px;
+    }
   }
 `
 

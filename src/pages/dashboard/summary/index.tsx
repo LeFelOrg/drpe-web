@@ -29,7 +29,7 @@ const Summary: React.FC = () => {
               <div></div>
             </PlaceholderLoading>
           </div>
-          <strong>Name</strong>
+          <strong>Name Surname (Coordinator)</strong>
         </article>
       </Team>
       <Info>

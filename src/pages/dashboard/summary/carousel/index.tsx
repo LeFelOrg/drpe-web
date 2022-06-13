@@ -14,6 +14,8 @@ const Carousel = () => {
   const sliderRef = useRef<Slider>(null)
 
   const settings = {
+    centerMode: true,
+    centerPadding: '257px',
     dots: true,
     infinite: true,
     slidesToShow: 1,
@@ -25,6 +27,26 @@ const Carousel = () => {
     appendDots: (dots: ReactNode) => (
       <CarouselIndicators>{dots}</CarouselIndicators>
     ),
+    responsive: [
+      {
+        breakpoint: 1279,
+        settings: {
+          centerPadding: '129px',
+        },
+      },
+      {
+        breakpoint: 1023,
+        settings: {
+          centerPadding: '54px',
+        },
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          centerMode: false,
+        },
+      },
+    ],
   }
 
   return (
@@ -43,16 +65,28 @@ const Carousel = () => {
           <CarouselSlides>
             <Slider ref={sliderRef} {...settings}>
               <div>
-                <img src="https://picsum.photos/248/352" alt="" />
+                <img
+                  src="https://api.lorem.space/image/car?w=314&h=442"
+                  alt=""
+                />
               </div>
               <div>
-                <img src="https://picsum.photos/248/352" alt="" />
+                <img
+                  src="https://api.lorem.space/image/car?w=314&h=442"
+                  alt=""
+                />
               </div>
               <div>
-                <img src="https://picsum.photos/248/352" alt="" />
+                <img
+                  src="https://api.lorem.space/image/car?w=314&h=442"
+                  alt=""
+                />
               </div>
               <div>
-                <img src="https://picsum.photos/248/352" alt="" />
+                <img
+                  src="https://api.lorem.space/image/car?w=314&h=442"
+                  alt=""
+                />
               </div>
             </Slider>
           </CarouselSlides>

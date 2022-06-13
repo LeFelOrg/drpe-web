@@ -5,6 +5,15 @@ interface ProgressPercent {
 }
 
 export const Container = styled.div`
+  display: grid;
+  gap: 24px;
+  grid-template-areas:
+    'title'
+    'team'
+    'info'
+    'progress'
+    'carousel';
+
   h2 {
     display: flex;
     align-items: center;
@@ -30,14 +39,24 @@ export const Container = styled.div`
     padding-left: 24px;
   }
 
-  display: grid;
-  gap: 24px;
-  grid-template-areas:
-    'title'
-    'team'
-    'info'
-    'progress'
-    'carousel';
+  @media screen and (min-width: 1024px) {
+    grid-template-areas:
+      'title title'
+      'team info'
+      'progress progress'
+      'carousel carousel';
+    grid-template-columns: 1fr 296px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    grid-template-areas:
+      'title title title'
+      'team team info'
+      'progress progress progress'
+      'carousel carousel carousel';
+
+    grid-template-columns: 1fr 1fr 296px;
+  }
 `
 
 export const Team = styled.div`
@@ -86,6 +105,8 @@ export const Info = styled.div`
   }
 
   img {
+    width: 250px;
+    height: 380px;
     border-radius: 10px;
     display: block;
     margin: 0 auto;
