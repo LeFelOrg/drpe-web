@@ -7,6 +7,8 @@ import Protected from './protected'
 import RperList from '../pages/rper-list'
 import Profile from '../pages/profile'
 import Dashboard from '../pages/dashboard'
+import Summary from '../pages/dashboard/summary'
+import SecondaryData from '../pages/dashboard/secondary-data'
 
 function Router() {
   return (
@@ -19,7 +21,13 @@ function Router() {
         <Route element={<Protected />}>
           <Route path="/rper-list" element={<RperList />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route element={<Dashboard />}>
+            <Route path="/dashboard" element={<Summary />} />
+            <Route
+              path="/dashboard/secondary-data"
+              element={<SecondaryData />}
+            />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

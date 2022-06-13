@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react'
+import { Outlet } from 'react-router-dom'
 import { MdMenu } from 'react-icons/md'
 import { IoMdArrowDropup, IoMdArrowDropdown } from 'react-icons/io'
 import { RiExchangeFill } from 'react-icons/ri'
 import Header from '../../components/header'
 import StatusButton from '../../components/status-button'
-import Summary from './summary'
 import { Main, Menu, SubMenuTitle, SubMenuItems, Content } from './styles'
 
 const Dashboard: React.FC = () => {
@@ -188,7 +188,7 @@ const Dashboard: React.FC = () => {
           </section>
         </Menu>
         <Content>
-          <Summary />
+          <Outlet />
         </Content>
       </Main>
     </>
