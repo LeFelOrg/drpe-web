@@ -1,24 +1,20 @@
 import { useCallback, useState, useRef } from 'react'
 import { FiSearch, FiChevronDown, FiChevronUp } from 'react-icons/fi'
-import { AiOutlineClose } from 'react-icons/ai'
-import { useAuth } from '../../contexts/auth-context'
 import Header from '../../components/header'
 import Button from '../../components/button'
+import NewRperModal from './modal-new-rper'
 import {
   Card,
   InputContainer,
   Main,
-  Modal,
   SortBtn,
   SortContainer,
   SortList,
 } from './styles'
 
 const RperList: React.FC = () => {
-  const [toggleSort, setToggleSort] = useState(false)
   const modalRef = useRef<HTMLDialogElement>(null)
-
-  const { user } = useAuth()
+  const [toggleSort, setToggleSort] = useState(false)
 
   const toggleSortBtn = useCallback(() => {
     toggleSort ? setToggleSort(false) : setToggleSort(true)
@@ -26,10 +22,6 @@ const RperList: React.FC = () => {
 
   const openModal = useCallback(() => {
     modalRef.current?.showModal()
-  }, [modalRef])
-
-  const closeModal = useCallback(() => {
-    modalRef.current?.close()
   }, [modalRef])
 
   return (
@@ -112,20 +104,7 @@ const RperList: React.FC = () => {
             </div>
           </div>
         </Card>
-        <Modal ref={modalRef}>
-          <button type="button" onClick={closeModal}>
-            <AiOutlineClose />
-          </button>
-          <form>
-            <label htmlFor="rperName">RPER Name:</label>
-            <input type="text" name="rperName" id="rperName" />
-            <p>
-              <span>Coordinator: </span>
-              <strong>{user.name}</strong>
-            </p>
-            <button>Create RPER</button>
-          </form>
-        </Modal>
+        <NewRperModal ref={modalRef} />
       </Main>
     </>
   )
