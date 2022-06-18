@@ -13,11 +13,19 @@ export const Modal = styled.dialog`
   }
 
   > button {
+    width: 24px;
+    height: 24px;
     border: 0;
     background-color: transparent;
     position: absolute;
     top: 12px;
     right: 24px;
+    border-radius: 50%;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: #dfdfdf;
+    }
 
     svg {
       width: 18px;
@@ -35,14 +43,24 @@ export const Modal = styled.dialog`
       color: #7371ff;
     }
 
-    input {
-      margin: 16px 0;
-      border: 0;
-      border-bottom: 1px solid black;
-      font-size: 1.6rem;
+    > div {
+      border-color: #c0c0c3;
+      width: 100%;
+      margin: 16px 0 24px;
 
-      &:focus {
-        outline: 0;
+      &:focus-within {
+        border: 2px solid #7371ff;
+      }
+
+      input {
+        width: 100%;
+      }
+
+      span {
+        background-color: #c53030;
+        color: #ffffff;
+        width: 90px;
+        font-size: 1rem;
       }
     }
 
@@ -97,10 +115,13 @@ export const Modal = styled.dialog`
       padding: 30px 40px;
       margin-top: 40px;
 
-      input {
-        margin-top: 30px;
-        margin-bottom: 90px;
-        font-size: 1.8rem;
+      > div {
+        margin-bottom: 56px;
+
+        span {
+          width: 120px;
+          font-size: 1.4rem;
+        }
       }
 
       p {
