@@ -1,5 +1,6 @@
-import { useCallback, useState, useRef } from 'react'
+import { useCallback, useState, useRef, useEffect } from 'react'
 import { FiSearch, FiChevronDown, FiChevronUp } from 'react-icons/fi'
+import { useRper } from '../../contexts/rper-context'
 import Header from '../../components/header'
 import Button from '../../components/button'
 import NewRperModal from './modal-new-rper'
@@ -15,6 +16,11 @@ import {
 const RperList: React.FC = () => {
   const modalRef = useRef<HTMLDialogElement>(null)
   const [toggleSort, setToggleSort] = useState(false)
+  const { rpers, getRpers } = useRper()
+
+  useEffect(() => {
+    getRpers()
+  }, [])
 
   const toggleSortBtn = useCallback(() => {
     toggleSort ? setToggleSort(false) : setToggleSort(true)
@@ -23,6 +29,8 @@ const RperList: React.FC = () => {
   const openModal = useCallback(() => {
     modalRef.current?.showModal()
   }, [modalRef])
+
+  console.log(rpers)
 
   return (
     <>
@@ -48,62 +56,19 @@ const RperList: React.FC = () => {
           <button>Search</button>
         </InputContainer>
 
-        <Card>
-          <img src="https://picsum.photos/300/280" alt="" />
-          <div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
-              expedita quis optio, nobis recusandae qui? Deleniti voluptatibus
-              odio perferendis laudantium.
-            </p>
+        {rpers?.map(rper => (
+          <Card key={rper.rper_id}>
+            <img src="https://picsum.photos/300/280" alt="" />
             <div>
-              <span>Lorem ipsum</span>
-              <span>Lorem ipsum</span>
+              <p>{rper.name}</p>
+              <div>
+                <span>{rper.updated_at}</span>
+                <span>{rper.created_at}</span>
+              </div>
             </div>
-          </div>
-        </Card>
-        <Card>
-          <img src="https://picsum.photos/300/280" alt="" />
-          <div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
-              expedita quis optio, nobis recusandae qui? Deleniti voluptatibus
-              odio perferendis laudantium.
-            </p>
-            <div>
-              <span>Lorem ipsum</span>
-              <span>Lorem ipsum</span>
-            </div>
-          </div>
-        </Card>
-        <Card>
-          <img src="https://picsum.photos/300/280" alt="" />
-          <div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
-              expedita quis optio, nobis recusandae qui? Deleniti voluptatibus
-              odio perferendis laudantium.
-            </p>
-            <div>
-              <span>Lorem ipsum</span>
-              <span>Lorem ipsum</span>
-            </div>
-          </div>
-        </Card>
-        <Card>
-          <img src="https://picsum.photos/300/280" alt="" />
-          <div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
-              expedita quis optio, nobis recusandae qui? Deleniti voluptatibus
-              odio perferendis laudantium.
-            </p>
-            <div>
-              <span>Lorem ipsum</span>
-              <span>Lorem ipsum</span>
-            </div>
-          </div>
-        </Card>
+          </Card>
+        ))}
+
         <NewRperModal ref={modalRef} />
       </Main>
     </>

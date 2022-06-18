@@ -9,19 +9,17 @@ interface Rper {
   updated_at: string
 }
 
-const RperContext = createContext({})
+interface RperContextData {
+  rpers: [Rper] | null
+  getRpers: () => Promise<void>
+}
+
+const RperContext = createContext({} as RperContextData)
 
 const RperProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [rpers, setRpers] = useState<[Rper] | Promise<object>>(async () => {
-    const response = await api.get('rpers')
-    if (response) {
-      return response.data
-    }
-
-    return {}
-  })
+  const [rpers, setRpers] = useState<[Rper] | null>(null)
 
   const getRpers = useCallback(async () => {
     try {
@@ -39,7 +37,7 @@ const RperProvider: React.FC<{ children: React.ReactNode }> = ({
   )
 }
 
-function useRper() {
+function useRper(): RperContextData {
   const context = useContext(RperContext)
 
   if (!context) {
