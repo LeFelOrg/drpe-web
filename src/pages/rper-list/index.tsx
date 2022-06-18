@@ -13,6 +13,7 @@ import {
   SortContainer,
   SortList,
 } from './styles'
+import { RiH1 } from 'react-icons/ri'
 
 interface Rper {
   name: string
@@ -24,8 +25,10 @@ interface Rper {
 
 const RperList: React.FC = () => {
   const modalRef = useRef<HTMLDialogElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
   const [toggleSort, setToggleSort] = useState(false)
   const { rpers, getRpers } = useRper()
+  const [filterdRpers, setFilterdRpers] = useState<any>(rpers)
 
   useEffect(() => {
     getRpers()
@@ -78,6 +81,17 @@ const RperList: React.FC = () => {
     setToggleSort(false)
   }, [rpers])
 
+  const search = useCallback(() => {
+    const searchWord = inputRef.current?.value
+    const filter = rpers?.filter(rper => {
+      if (searchWord) {
+        return rper.name.toLowerCase().includes(searchWord.toLowerCase())
+      }
+      return rpers
+    })
+    setFilterdRpers(filter)
+  }, [rpers])
+
   return (
     <>
       <Header btnType="signOut" />
@@ -98,30 +112,51 @@ const RperList: React.FC = () => {
         </SortContainer>
         <InputContainer>
           <FiSearch />
-          <input type="text" placeholder="Search" />
-          <button>Search</button>
+          <input ref={inputRef} type="text" placeholder="Search" />
+          <button onClick={search}>Search</button>
         </InputContainer>
 
-        {rpers?.map(rper => (
-          <Link to={`/dashboard/${rper.rper_id}`} key={rper.rper_id}>
-            <Card>
-              <img src="https://picsum.photos/300/280" alt="" />
-              <div>
-                <p>{rper.name}</p>
+        {filterdRpers
+          ? filterdRpers?.map((rper: any) => (
+            <Link to={`/dashboard/${rper.rper_id}`} key={rper.rper_id}>
+              <Card>
+                <img src="https://picsum.photos/300/280" alt="" />
                 <div>
-                  <span>
-                    Last Update:{' '}
-                    {new Date(rper.updated_at).toLocaleDateString('en-US')}
-                  </span>
-                  <span>
-                    Created on:{' '}
-                    {new Date(rper.created_at).toLocaleDateString('en-US')}
-                  </span>
+                  <p>{rper.name}</p>
+                  <div>
+                    <span>
+                        Last Update:{' '}
+                      {new Date(rper.updated_at).toLocaleDateString('en-US')}
+                    </span>
+                    <span>
+                        Created on:{' '}
+                      {new Date(rper.created_at).toLocaleDateString('en-US')}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </Card>
-          </Link>
-        ))}
+              </Card>
+            </Link>
+          ))
+          : rpers?.map(rper => (
+            <Link to={`/dashboard/${rper.rper_id}`} key={rper.rper_id}>
+              <Card>
+                <img src="https://picsum.photos/300/280" alt="" />
+                <div>
+                  <p>{rper.name}</p>
+                  <div>
+                    <span>
+                        Last Update:{' '}
+                      {new Date(rper.updated_at).toLocaleDateString('en-US')}
+                    </span>
+                    <span>
+                        Created on:{' '}
+                      {new Date(rper.created_at).toLocaleDateString('en-US')}
+                    </span>
+                  </div>
+                </div>
+              </Card>
+            </Link>
+          ))}
 
         <NewRperModal ref={modalRef} />
       </Main>
