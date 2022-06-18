@@ -1,10 +1,13 @@
 import { AuthProvider } from './auth-context'
 import { ToastProvider } from './toast-context'
+import { RperProvider } from './rper-context'
 
 const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <AuthProvider>
-      <ToastProvider>{children}</ToastProvider>
+      <ToastProvider>
+        <RperProvider>{children}</RperProvider>
+      </ToastProvider>
     </AuthProvider>
   )
 }
