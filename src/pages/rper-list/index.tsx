@@ -13,7 +13,6 @@ import {
   SortContainer,
   SortList,
 } from './styles'
-import { RiH1 } from 'react-icons/ri'
 
 interface Rper {
   name: string
@@ -28,11 +27,16 @@ const RperList: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null)
   const [toggleSort, setToggleSort] = useState(false)
   const { rpers, getRpers } = useRper()
-  const [filterdRpers, setFilterdRpers] = useState<any>(rpers)
+  const [filterdRpers, setFilterdRpers] = useState<any>()
 
   useEffect(() => {
     getRpers()
   }, [])
+
+  useEffect(() => {
+    setFilterdRpers(rpers)
+    console.log(filterdRpers)
+  }, [rpers])
 
   const toggleSortBtn = useCallback(() => {
     toggleSort ? setToggleSort(false) : setToggleSort(true)
@@ -43,7 +47,7 @@ const RperList: React.FC = () => {
   }, [modalRef])
 
   const sortByName = useCallback(() => {
-    rpers?.sort((a: Rper, b: Rper) => {
+    filterdRpers?.sort((a: Rper, b: Rper) => {
       if (a.name.toUpperCase() < b.name.toUpperCase()) {
         return -1
       }
@@ -53,10 +57,10 @@ const RperList: React.FC = () => {
       return 0
     })
     setToggleSort(false)
-  }, [rpers])
+  }, [filterdRpers])
 
   const sortByUpdatedDate = useCallback(() => {
-    rpers?.sort((a: Rper, b: Rper) => {
+    filterdRpers?.sort((a: Rper, b: Rper) => {
       if (a.updated_at.toUpperCase() > b.updated_at.toUpperCase()) {
         return -1
       }
@@ -66,10 +70,10 @@ const RperList: React.FC = () => {
       return 0
     })
     setToggleSort(false)
-  }, [rpers])
+  }, [filterdRpers])
 
   const sortByCreatedDate = useCallback(() => {
-    rpers?.sort((a: Rper, b: Rper) => {
+    filterdRpers?.sort((a: Rper, b: Rper) => {
       if (a.created_at.toUpperCase() < b.created_at.toUpperCase()) {
         return -1
       }
@@ -79,7 +83,7 @@ const RperList: React.FC = () => {
       return 0
     })
     setToggleSort(false)
-  }, [rpers])
+  }, [filterdRpers])
 
   const search = useCallback(() => {
     const searchWord = inputRef.current?.value
@@ -116,47 +120,26 @@ const RperList: React.FC = () => {
           <button onClick={search}>Search</button>
         </InputContainer>
 
-        {filterdRpers
-          ? filterdRpers?.map((rper: any) => (
-            <Link to={`/dashboard/${rper.rper_id}`} key={rper.rper_id}>
-              <Card>
-                <img src="https://picsum.photos/300/280" alt="" />
+        {filterdRpers?.map((rper: any) => (
+          <Link to={`/dashboard/${rper.rper_id}`} key={rper.rper_id}>
+            <Card>
+              <img src="https://picsum.photos/300/280" alt="" />
+              <div>
+                <p>{rper.name}</p>
                 <div>
-                  <p>{rper.name}</p>
-                  <div>
-                    <span>
-                        Last Update:{' '}
-                      {new Date(rper.updated_at).toLocaleDateString('en-US')}
-                    </span>
-                    <span>
-                        Created on:{' '}
-                      {new Date(rper.created_at).toLocaleDateString('en-US')}
-                    </span>
-                  </div>
+                  <span>
+                    Last Update:{' '}
+                    {new Date(rper.updated_at).toLocaleDateString('en-US')}
+                  </span>
+                  <span>
+                    Created on:{' '}
+                    {new Date(rper.created_at).toLocaleDateString('en-US')}
+                  </span>
                 </div>
-              </Card>
-            </Link>
-          ))
-          : rpers?.map(rper => (
-            <Link to={`/dashboard/${rper.rper_id}`} key={rper.rper_id}>
-              <Card>
-                <img src="https://picsum.photos/300/280" alt="" />
-                <div>
-                  <p>{rper.name}</p>
-                  <div>
-                    <span>
-                        Last Update:{' '}
-                      {new Date(rper.updated_at).toLocaleDateString('en-US')}
-                    </span>
-                    <span>
-                        Created on:{' '}
-                      {new Date(rper.created_at).toLocaleDateString('en-US')}
-                    </span>
-                  </div>
-                </div>
-              </Card>
-            </Link>
-          ))}
+              </div>
+            </Card>
+          </Link>
+        ))}
 
         <NewRperModal ref={modalRef} />
       </Main>
