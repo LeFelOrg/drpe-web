@@ -27,6 +27,14 @@ export const Main = styled.main`
     width: 100%;
   }
 
+  > a {
+    text-decoration: none;
+
+    &:hover {
+      transform: scale(102%);
+    }
+  }
+
   @media screen and (min-width: 720px) {
     grid-template-columns: 1fr 1fr;
     gap: 10px;
@@ -222,6 +230,7 @@ export const Card = styled.article`
     width: 314px;
 
     p {
+      height: 160px;
       color: #7371ff;
       font-size: 2rem;
       padding: 20px;

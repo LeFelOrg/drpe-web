@@ -1,4 +1,5 @@
 import { useCallback, useState, useRef, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { FiSearch, FiChevronDown, FiChevronUp } from 'react-icons/fi'
 import { useRper } from '../../contexts/rper-context'
 import Header from '../../components/header'
@@ -12,6 +13,14 @@ import {
   SortContainer,
   SortList,
 } from './styles'
+
+interface Rper {
+  name: string
+  coordinator_id: string
+  rper_id: string
+  created_at: string
+  updated_at: string
+}
 
 const RperList: React.FC = () => {
   const modalRef = useRef<HTMLDialogElement>(null)
@@ -30,7 +39,44 @@ const RperList: React.FC = () => {
     modalRef.current?.showModal()
   }, [modalRef])
 
-  console.log(rpers)
+  const sortByName = useCallback(() => {
+    rpers?.sort((a: Rper, b: Rper) => {
+      if (a.name.toUpperCase() < b.name.toUpperCase()) {
+        return -1
+      }
+      if (a.name.toUpperCase() > b.name.toUpperCase()) {
+        return 1
+      }
+      return 0
+    })
+    setToggleSort(false)
+  }, [rpers])
+
+  const sortByUpdatedDate = useCallback(() => {
+    rpers?.sort((a: Rper, b: Rper) => {
+      if (a.updated_at.toUpperCase() > b.updated_at.toUpperCase()) {
+        return -1
+      }
+      if (a.updated_at.toUpperCase() < b.updated_at.toUpperCase()) {
+        return 1
+      }
+      return 0
+    })
+    setToggleSort(false)
+  }, [rpers])
+
+  const sortByCreatedDate = useCallback(() => {
+    rpers?.sort((a: Rper, b: Rper) => {
+      if (a.created_at.toUpperCase() < b.created_at.toUpperCase()) {
+        return -1
+      }
+      if (a.created_at.toUpperCase() > b.created_at.toUpperCase()) {
+        return 1
+      }
+      return 0
+    })
+    setToggleSort(false)
+  }, [rpers])
 
   return (
     <>
@@ -45,9 +91,9 @@ const RperList: React.FC = () => {
             <FiChevronUp />
           </SortBtn>
           <SortList toggle={toggleSort}>
-            <li>Name</li>
-            <li>Last Update</li>
-            <li>Created Date</li>
+            <li onClick={sortByName}>Name</li>
+            <li onClick={sortByUpdatedDate}>Last Update</li>
+            <li onClick={sortByCreatedDate}>Created Date</li>
           </SortList>
         </SortContainer>
         <InputContainer>
@@ -57,16 +103,24 @@ const RperList: React.FC = () => {
         </InputContainer>
 
         {rpers?.map(rper => (
-          <Card key={rper.rper_id}>
-            <img src="https://picsum.photos/300/280" alt="" />
-            <div>
-              <p>{rper.name}</p>
+          <Link to={`/dashboard/${rper.rper_id}`} key={rper.rper_id}>
+            <Card>
+              <img src="https://picsum.photos/300/280" alt="" />
               <div>
-                <span>{rper.updated_at}</span>
-                <span>{rper.created_at}</span>
+                <p>{rper.name}</p>
+                <div>
+                  <span>
+                    Last Update:{' '}
+                    {new Date(rper.updated_at).toLocaleDateString('en-US')}
+                  </span>
+                  <span>
+                    Created on:{' '}
+                    {new Date(rper.created_at).toLocaleDateString('en-US')}
+                  </span>
+                </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          </Link>
         ))}
 
         <NewRperModal ref={modalRef} />
