@@ -59,7 +59,9 @@ const NewRperModal: React.ForwardRefRenderFunction<HTMLDialogElement> = (
           coordinator_id: user.user_id,
         }
 
-        await api.post('/rpers', formData)
+        const response = await api.post('/rpers', formData)
+
+        const { rper_id } = response.data
 
         addToast({
           type: 'success',
@@ -67,7 +69,7 @@ const NewRperModal: React.ForwardRefRenderFunction<HTMLDialogElement> = (
           description: 'You can now work on it',
         })
 
-        navigate('/dashboard')
+        navigate(`/dashboard/${rper_id}`)
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err)

@@ -27,7 +27,7 @@ const RperList: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null)
   const [toggleSort, setToggleSort] = useState(false)
   const { rpers, getRpers } = useRper()
-  const [filterdRpers, setFilterdRpers] = useState<any>()
+  const [filterdRpers, setFilterdRpers] = useState<[Rper] | null>(null)
 
   useEffect(() => {
     getRpers()
@@ -92,7 +92,7 @@ const RperList: React.FC = () => {
         return rper.name.toLowerCase().includes(searchWord.toLowerCase())
       }
       return rpers
-    })
+    }) as [Rper]
     setFilterdRpers(filter)
   }, [rpers])
 
@@ -120,7 +120,7 @@ const RperList: React.FC = () => {
           <button onClick={search}>Search</button>
         </InputContainer>
 
-        {filterdRpers?.map((rper: any) => (
+        {filterdRpers?.map((rper: Rper) => (
           <Link to={`/dashboard/${rper.rper_id}`} key={rper.rper_id}>
             <Card>
               <img src="https://picsum.photos/300/280" alt="" />
