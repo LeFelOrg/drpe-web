@@ -27,7 +27,7 @@ const RperList: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null)
   const [toggleSort, setToggleSort] = useState(false)
   const { rpers, getRpers } = useRper()
-  const [filterdRpers, setFilterdRpers] = useState<[Rper] | null>(null)
+  const [filterdRpers, setFilterdRpers] = useState<Rper[] | null>(null)
 
   useEffect(() => {
     getRpers()
@@ -35,7 +35,6 @@ const RperList: React.FC = () => {
 
   useEffect(() => {
     setFilterdRpers(rpers)
-    console.log(filterdRpers)
   }, [rpers])
 
   const toggleSortBtn = useCallback(() => {
@@ -92,7 +91,7 @@ const RperList: React.FC = () => {
         return rper.name.toLowerCase().includes(searchWord.toLowerCase())
       }
       return rpers
-    }) as [Rper]
+    }) as Rper[]
     setFilterdRpers(filter)
   }, [rpers])
 
