@@ -4,6 +4,10 @@ interface SubMenuProps {
   toggle?: boolean
 }
 
+interface SectionsButtonSelection {
+  isSelected: boolean
+}
+
 const toggle = css`
   display: none;
 `
@@ -11,6 +15,12 @@ const toggle = css`
 const hide = css`
   visibility: hidden;
   height: 0px;
+`
+
+const selected = css`
+  background-color: #e5e5e5;
+  border-radius: 25px 0px 0px 25px;
+  width: calc(100% + 16px);
 `
 
 export const Main = styled.main`
@@ -51,7 +61,7 @@ export const Main = styled.main`
 
 export const Menu = styled.aside`
   width: 100%;
-  padding: 24px;
+  padding: 24px 16px;
   background-color: #ffffff;
   border-radius: 12px;
   display: flex;
@@ -89,7 +99,7 @@ export const Menu = styled.aside`
 
 export const SubMenuTitle = styled.button<SubMenuProps>`
   width: 100%;
-  margin: 24px 0 16px 0;
+  margin: 24px 0 16px 8px;
   font-size: 1.8rem;
   font-weight: 700;
   color: #7371ff;
@@ -103,6 +113,7 @@ export const SubMenuTitle = styled.button<SubMenuProps>`
     color: #bdbdbd;
     width: 32px;
     height: 32px;
+    margin-right: 8px;
   }
 
   svg:first-child {
@@ -145,32 +156,6 @@ export const SubMenuItems = styled.div<SubMenuProps>`
 
   ${props => !props.toggle && hide}
 
-  > button {
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: #828282;
-    background-color: transparent;
-    border: 0;
-    padding: 8px 0;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-
-    > svg {
-      width: 22px;
-      height: 22px;
-      color: #ff0042;
-      margin-right: 4px;
-    }
-  }
-
-  > button:focus {
-    background-color: #f0edee;
-    border-radius: 25px 0px 0px 25px;
-    width: calc(100% + 24px);
-    text-align: left;
-  }
-
   @media screen and (min-width: 768px) {
     &:first-child {
       margin-bottom: 0;
@@ -180,6 +165,27 @@ export const SubMenuItems = styled.div<SubMenuProps>`
     height: 100%;
 
     ${props => props.toggle && hide}
+  }
+`
+
+export const SectionsBtn = styled.button<SectionsButtonSelection>`
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #828282;
+  background-color: transparent;
+  border: 0;
+  padding: 8px 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  ${props => props.isSelected && selected}
+
+  > svg {
+    width: 22px;
+    height: 22px;
+    color: #ff0042;
+    margin-right: 4px;
   }
 `
 

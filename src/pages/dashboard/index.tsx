@@ -5,7 +5,14 @@ import { IoMdArrowDropup, IoMdArrowDropdown } from 'react-icons/io'
 import { RiExchangeFill } from 'react-icons/ri'
 import Header from '../../components/header'
 import StatusButton from '../../components/status-button'
-import { Main, Menu, SubMenuTitle, SubMenuItems, Content } from './styles'
+import {
+  Main,
+  Menu,
+  SubMenuTitle,
+  SubMenuItems,
+  Content,
+  SectionsBtn,
+} from './styles'
 
 const Dashboard: React.FC = () => {
   const [togglePreparation, setTogglePreparation] = useState(false)
@@ -37,10 +44,10 @@ const Dashboard: React.FC = () => {
           </h2>
           <section>
             <SubMenuItems>
-              <button>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 Summary
-              </button>
+              </SectionsBtn>
             </SubMenuItems>
           </section>
           <section>
@@ -53,41 +60,41 @@ const Dashboard: React.FC = () => {
               <IoMdArrowDropdown />
             </SubMenuTitle>
             <SubMenuItems toggle={togglePreparation}>
-              <button>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Team
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Secondary Data
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Contact Collectivity
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Interview Guide
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Focus Group Guide
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Themes Framework
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Tasks and Calendar
-              </button>
+              </SectionsBtn>
             </SubMenuItems>
           </section>
           <section>
@@ -97,61 +104,61 @@ const Dashboard: React.FC = () => {
               <IoMdArrowDropdown />
             </SubMenuTitle>
             <SubMenuItems toggle={toggleFieldwork}>
-              <button>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Collectivity Registration
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Presentation
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Historical Mapping
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Transect Walk
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Venn Diagram
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Seasonal Calendar
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Daily Routines
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Input and Output
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Interview & Focus Group
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Reality and Obj. Matrix
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Election of Priorities
-              </button>
+              </SectionsBtn>
             </SubMenuItems>
           </section>
           <section>
@@ -164,26 +171,26 @@ const Dashboard: React.FC = () => {
               <IoMdArrowDropdown />
             </SubMenuTitle>
             <SubMenuItems toggle={toggleFinalization}>
-              <button>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Extra Information
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Final Considerations
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Acknoledgment
-              </button>
-              <button>
+              </SectionsBtn>
+              <SectionsBtn isSelected={false}>
                 <RiExchangeFill />
                 <StatusButton />
                 Generate Final Report
-              </button>
+              </SectionsBtn>
             </SubMenuItems>
           </section>
         </Menu>
