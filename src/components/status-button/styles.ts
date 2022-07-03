@@ -1,41 +1,43 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { shade } from 'polished'
 
-interface StatusProps {
-  toggle: boolean
-}
-
-export const Container = styled.div<StatusProps>`
+export const Container = styled.div`
   cursor: pointer;
   position: relative;
+  color: #7371ff;
 
   > svg {
     width: 14px;
     height: 14px;
-    color: #7371ff;
+    color: inherit;
     transform: translateY(15%);
+  }
+
+  &:hover ul {
+    visibility: visible;
+    height: 144px;
   }
 `
 
-export const StatusList = styled.ul<StatusProps>`
+export const StatusList = styled.ul`
   font-size: 1.4rem;
   z-index: 1;
   transition: 0.6s;
   overflow-y: hidden;
-  background-color: #e5e5e5;
+  background-color: #f0edee;
   border-radius: 10px;
-  height: 144px;
   width: 160px;
   position: absolute;
   left: 16px;
   top: -10px;
 
-  ${props =>
-    !props.toggle &&
-    css`
-      visibility: hidden;
-      height: 0px;
-    `}
+  visibility: hidden;
+  height: 0px;
+
+  &:hover {
+    visibility: visible;
+    height: 144px;
+  }
 
   li {
     display: flex;
@@ -44,7 +46,7 @@ export const StatusList = styled.ul<StatusProps>`
     list-style: none;
     padding: 8px 16px;
     color: #433889;
-    border-bottom: 1px solid #f2f4f8;
+    border-bottom: 1px solid #ffffff;
 
     &:hover {
       background-color: ${shade(0.2, '#f2f4f8')};

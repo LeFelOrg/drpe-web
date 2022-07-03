@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
 import { MdMenu } from 'react-icons/md'
 import { IoMdArrowDropup, IoMdArrowDropdown } from 'react-icons/io'
@@ -12,12 +13,15 @@ import {
   SubMenuItems,
   Content,
   SectionsBtn,
+  LinkBtn,
+  IconBtn,
 } from './styles'
 
 const Dashboard: React.FC = () => {
   const [togglePreparation, setTogglePreparation] = useState(false)
   const [toggleFieldwork, setToggleFieldwork] = useState(false)
   const [toggleFinalization, setToggleFinalization] = useState(false)
+  const [selectedButton, setSelectedButton] = useState('Summary')
 
   const togglePreparationBtn = useCallback(() => {
     togglePreparation ? setTogglePreparation(false) : setTogglePreparation(true)
@@ -33,6 +37,22 @@ const Dashboard: React.FC = () => {
       : setToggleFinalization(true)
   }, [toggleFinalization])
 
+  const diselectOtherButtons = useCallback(
+    (currentButton: string) => {
+      if (selectedButton !== currentButton) {
+        setSelectedButton(currentButton)
+      }
+    },
+    [selectedButton],
+  )
+
+  const handleClick = useCallback(
+    (button: string) => {
+      diselectOtherButtons(button)
+    },
+    [selectedButton],
+  )
+
   return (
     <>
       <Header />
@@ -44,9 +64,17 @@ const Dashboard: React.FC = () => {
           </h2>
           <section>
             <SubMenuItems>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
-                Summary
+              <SectionsBtn isSelected={selectedButton === 'Summary'}>
+                <IconBtn>
+                  <IconBtn>
+                    <RiExchangeFill />
+                  </IconBtn>
+                </IconBtn>
+                <LinkBtn onClick={() => handleClick('Summary')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Summary
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
             </SubMenuItems>
           </section>
@@ -60,40 +88,84 @@ const Dashboard: React.FC = () => {
               <IoMdArrowDropdown />
             </SubMenuTitle>
             <SubMenuItems toggle={togglePreparation}>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn isSelected={selectedButton === 'Team'}>
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Team
+                <LinkBtn onClick={() => handleClick('Team')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Team
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn isSelected={selectedButton === 'Secondary Data'}>
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Secondary Data
+                <LinkBtn onClick={() => handleClick('Secondary Data')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Secondary Data
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn
+                isSelected={selectedButton === 'Contact Collectivity'}
+              >
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Contact Collectivity
+                <LinkBtn onClick={() => handleClick('Contact Collectivity')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Contact Collectivity
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn isSelected={selectedButton === 'Interview Guide'}>
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Interview Guide
+                <LinkBtn onClick={() => handleClick('Interview Guide')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Interview Guide
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn isSelected={selectedButton === 'Focus Group Guide'}>
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Focus Group Guide
+                <LinkBtn onClick={() => handleClick('Focus Group Guide')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Focus Group Guide
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn isSelected={selectedButton === 'Themes Framework'}>
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Themes Framework
+                <LinkBtn onClick={() => handleClick('Themes Framework')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Themes Framework
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn isSelected={selectedButton === 'Tasks and Calendar'}>
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Tasks and Calendar
+                <LinkBtn onClick={() => handleClick('Tasks and Calendar')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Tasks and Calendar
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
             </SubMenuItems>
           </section>
@@ -104,60 +176,136 @@ const Dashboard: React.FC = () => {
               <IoMdArrowDropdown />
             </SubMenuTitle>
             <SubMenuItems toggle={toggleFieldwork}>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn
+                isSelected={selectedButton === 'Collectivity Registration'}
+              >
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Collectivity Registration
+                <LinkBtn
+                  onClick={() => handleClick('Collectivity Registration')}
+                >
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Collectivity Registration
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn isSelected={selectedButton === 'Presentation'}>
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Presentation
+                <LinkBtn onClick={() => handleClick('Presentation')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Presentation
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn isSelected={selectedButton === 'Historical Mapping'}>
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Historical Mapping
+                <LinkBtn onClick={() => handleClick('Historical Mapping')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Historical Mapping
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn isSelected={selectedButton === 'Transect Walk'}>
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Transect Walk
+                <LinkBtn onClick={() => handleClick('Transect Walk')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Transect Walk
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn isSelected={selectedButton === 'Venn Diagram'}>
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Venn Diagram
+                <LinkBtn onClick={() => handleClick('Venn Diagram')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Venn Diagram
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn isSelected={selectedButton === 'Seasonal Calendar'}>
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Seasonal Calendar
+                <LinkBtn onClick={() => handleClick('Seasonal Calendar')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Seasonal Calendar
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn isSelected={selectedButton === 'Daily Routines'}>
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Daily Routines
+                <LinkBtn onClick={() => handleClick('Daily Routines')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Daily Routines
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn isSelected={selectedButton === 'Input and Output'}>
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Input and Output
+                <LinkBtn onClick={() => handleClick('Input and Output')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Input and Output
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn
+                isSelected={selectedButton === 'Interview & Focus Group'}
+              >
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Interview & Focus Group
+                <LinkBtn onClick={() => handleClick('Interview & Focus Group')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Interview & Focus Group
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn
+                isSelected={selectedButton === 'Reality and Obj. Matrix'}
+              >
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Reality and Obj. Matrix
+                <LinkBtn onClick={() => handleClick('Reality and Obj. Matrix')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Reality and Obj. Matrix
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn
+                isSelected={selectedButton === 'Election of Priorities'}
+              >
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Election of Priorities
+                <LinkBtn onClick={() => handleClick('Election of Priorities')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Election of Priorities
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
             </SubMenuItems>
           </section>
@@ -171,25 +319,53 @@ const Dashboard: React.FC = () => {
               <IoMdArrowDropdown />
             </SubMenuTitle>
             <SubMenuItems toggle={toggleFinalization}>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn isSelected={selectedButton === 'Extra Information'}>
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Extra Information
+                <LinkBtn onClick={() => handleClick('Extra Information')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Extra Information
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn
+                isSelected={selectedButton === 'Final Considerations'}
+              >
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Final Considerations
+                <LinkBtn onClick={() => handleClick('Final Considerations')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Final Considerations
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn isSelected={selectedButton === 'Acknoledgment'}>
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Acknoledgment
+                <LinkBtn onClick={() => handleClick('Acknoledgment')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Acknoledgment
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
-              <SectionsBtn isSelected={false}>
-                <RiExchangeFill />
+              <SectionsBtn
+                isSelected={selectedButton === 'Generate Final Report'}
+              >
+                <IconBtn>
+                  <RiExchangeFill />
+                </IconBtn>
                 <StatusButton />
-                Generate Final Report
+                <LinkBtn onClick={() => handleClick('Generate Final Report')}>
+                  <Link to="/dashboard/c7b5c09b-a51d-4ad4-83a3-542e378629ad">
+                    Generate Final Report
+                  </Link>
+                </LinkBtn>
               </SectionsBtn>
             </SubMenuItems>
           </section>

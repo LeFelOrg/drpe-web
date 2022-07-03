@@ -8,12 +8,7 @@ import {
 import { Container, StatusList } from './styles'
 
 const StatusButton: React.FC = () => {
-  const [toggleStatus, setToggleStatus] = useState(false)
   const [status, setStatus] = useState('unstarted')
-
-  const toggleStatusBtn = useCallback(() => {
-    toggleStatus ? setToggleStatus(false) : setToggleStatus(true)
-  }, [toggleStatus])
 
   const currentStatus = useCallback(() => {
     if (status === 'inProgress') {
@@ -32,9 +27,9 @@ const StatusButton: React.FC = () => {
   }, [status])
 
   return (
-    <Container toggle={toggleStatus} onClick={toggleStatusBtn}>
+    <Container>
       {currentStatus()}
-      <StatusList toggle={toggleStatus}>
+      <StatusList>
         <li onClick={() => setStatus('inProgress')}>
           <MdErrorOutline />
           In Progress

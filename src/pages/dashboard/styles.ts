@@ -145,7 +145,7 @@ export const SubMenuItems = styled.div<SubMenuProps>`
     visibility: visible;
     margin-bottom: 40px;
 
-    button {
+    div {
       gap: 22px;
     }
   }
@@ -168,24 +168,38 @@ export const SubMenuItems = styled.div<SubMenuProps>`
   }
 `
 
-export const SectionsBtn = styled.button<SectionsButtonSelection>`
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: #828282;
-  background-color: transparent;
-  border: 0;
+export const SectionsBtn = styled.div<SectionsButtonSelection>`
+  width: calc(100% + 16px);
   padding: 8px 8px;
   display: flex;
   align-items: center;
   gap: 4px;
 
   ${props => props.isSelected && selected}
+`
 
-  > svg {
+export const IconBtn = styled.div`
+  margin-right: 4px;
+  height: 22px;
+
+  svg {
     width: 22px;
     height: 22px;
     color: #ff0042;
-    margin-right: 4px;
+  }
+`
+
+export const LinkBtn = styled.button`
+  border: 0;
+  background-color: transparent;
+  width: 100%;
+  text-align: left;
+
+  a {
+    text-decoration: none;
+    color: #828282;
+    font-size: 1.4rem;
+    font-weight: 500;
   }
 `
 
