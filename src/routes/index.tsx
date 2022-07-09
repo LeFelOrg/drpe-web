@@ -10,6 +10,26 @@ import Dashboard from '../pages/dashboard'
 import Summary from '../pages/dashboard/summary'
 import Team from '../pages/dashboard/team'
 import SecondaryData from '../pages/dashboard/secondary-data'
+import ContactCollectivity from '../pages/dashboard/contact-collectivity'
+import InterviewGuide from '../pages/dashboard/interview-guide'
+import FocusGroupGuide from '../pages/dashboard/focus-group-guide'
+import ThemesFramework from '../pages/dashboard/themes-framework'
+import TasksAndCalendar from '../pages/dashboard/tasks-and-calendar'
+import CollectivityRegistration from '../pages/dashboard/collectivity-registration'
+import Presentation from '../pages/dashboard/presentation'
+import HistoricalMapping from '../pages/dashboard/historical-mapping'
+import TransectWalk from '../pages/dashboard/transect-walk'
+import VennDiagram from '../pages/dashboard/venn-diagram'
+import SeasonalCalendar from '../pages/dashboard/seasonal-calendar'
+import DailyRoutines from '../pages/dashboard/daily-routines'
+import InputAndOutput from '../pages/dashboard/input-and-output'
+import InterviewFocusGroup from '../pages/dashboard/interview-focus-group'
+import RealityAndObjMatrix from '../pages/dashboard/reality-and-obj-matrix'
+import ElectionOfPriorities from '../pages/dashboard/election-of-priorities'
+import ExtraInformation from '../pages/dashboard/extra-information'
+import FinalConsiderations from '../pages/dashboard/final-considerations'
+import Acknoledgment from '../pages/dashboard/acknoledgment'
+import GenerateFinalReport from '../pages/dashboard/generate-final-report'
 
 function Router() {
   return (
@@ -66,7 +86,7 @@ function Router() {
               element={<TransectWalk />}
             />
             <Route
-              path="/dashboard/venn-diagram'/:id"
+              path="/dashboard/venn-diagram/:id"
               element={<VennDiagram />}
             />
             <Route
@@ -86,8 +106,8 @@ function Router() {
               element={<InterviewFocusGroup />}
             />
             <Route
-              path="/dashboard/reality-and-obj-Matrix/:id"
-              element={<RealityAandObjMatrix />}
+              path="/dashboard/reality-and-obj-matrix/:id"
+              element={<RealityAndObjMatrix />}
             />
             <Route
               path="/dashboard/election-of-priorities/:id"
