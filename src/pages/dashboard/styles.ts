@@ -194,13 +194,9 @@ export const LinkBtn = styled.button`
   background-color: transparent;
   width: 100%;
   text-align: left;
-
-  a {
-    text-decoration: none;
-    color: #828282;
-    font-size: 1.4rem;
-    font-weight: 500;
-  }
+  color: #828282;
+  font-size: 1.4rem;
+  font-weight: 500;
 `
 
 export const Content = styled.div`

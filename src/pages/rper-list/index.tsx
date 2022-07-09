@@ -120,7 +120,7 @@ const RperList: React.FC = () => {
         </InputContainer>
 
         {filterdRpers?.map((rper: Rper) => (
-          <Link to={`/dashboard/${rper.rper_id}`} key={rper.rper_id}>
+          <Link to={`/dashboard/summary/${rper.rper_id}`} key={rper.rper_id}>
             <Card>
               <img src="https://picsum.photos/300/280" alt="" />
               <div>
