@@ -29,6 +29,86 @@ function Router() {
               path="/dashboard/secondary-data/:id"
               element={<SecondaryData />}
             />
+            <Route
+              path="/dashboard/contact-collectivity/:id"
+              element={<ContactCollectivity />}
+            />
+            <Route
+              path="/dashboard/interview-guide/:id"
+              element={<InterviewGuide />}
+            />
+            <Route
+              path="/dashboard/focus-group-guide/:id"
+              element={<FocusGroupGuide />}
+            />
+            <Route
+              path="/dashboard/themes-framework/:id"
+              element={<ThemesFramework />}
+            />
+            <Route
+              path="/dashboard/tasks-and-calendar/:id"
+              element={<TasksAndCalendar />}
+            />
+            <Route
+              path="/dashboard/collectivity-registration/:id"
+              element={<CollectivityRegistration />}
+            />
+            <Route
+              path="/dashboard/presentation/:id"
+              element={<Presentation />}
+            />
+            <Route
+              path="/dashboard/historical-mapping/:id"
+              element={<HistoricalMapping />}
+            />
+            <Route
+              path="/dashboard/transect-walk/:id"
+              element={<TransectWalk />}
+            />
+            <Route
+              path="/dashboard/venn-diagram'/:id"
+              element={<VennDiagram />}
+            />
+            <Route
+              path="/dashboard/seasonal-calendar/:id"
+              element={<SeasonalCalendar />}
+            />
+            <Route
+              path="/dashboard/daily-routines/:id"
+              element={<DailyRoutines />}
+            />
+            <Route
+              path="/dashboard/input-and-output/:id"
+              element={<InputAndOutput />}
+            />
+            <Route
+              path="/dashboard/interview-focus-group/:id"
+              element={<InterviewFocusGroup />}
+            />
+            <Route
+              path="/dashboard/reality-and-obj-Matrix/:id"
+              element={<RealityAandObjMatrix />}
+            />
+            <Route
+              path="/dashboard/election-of-priorities/:id"
+              element={<ElectionOfPriorities />}
+            />
+            <Route
+              path="/dashboard/extra-information/:id"
+              element={<ExtraInformation />}
+            />
+            <Route
+              path="/dashboard/final-considerations/:id"
+              element={<FinalConsiderations />}
+            />
+            <Route
+              path="/dashboard/acknoledgment/:id"
+              element={<Acknoledgment />}
+            />
+            <Route
+              path="/dashboard/generate-final-report/:id"
+              element={<GenerateFinalReport />}
+            />
           </Route>
         </Route>
       </Routes>
