@@ -30,6 +30,7 @@ import ExtraInformation from '../pages/dashboard/extra-information'
 import FinalConsiderations from '../pages/dashboard/final-considerations'
 import Acknoledgment from '../pages/dashboard/acknoledgment'
 import GenerateFinalReport from '../pages/dashboard/generate-final-report'
+import NotFoundPage from '../pages/not-found-page'
 
 function Router() {
   return (
@@ -131,6 +132,7 @@ function Router() {
             />
           </Route>
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   )
