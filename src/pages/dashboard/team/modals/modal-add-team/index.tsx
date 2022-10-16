@@ -1,6 +1,6 @@
 import { forwardRef, useCallback, useEffect } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
-import Button from '../../../../components/button'
+import Button from '../../../../../components/button'
 import {
   Modal,
   PlaceholderLoading,
